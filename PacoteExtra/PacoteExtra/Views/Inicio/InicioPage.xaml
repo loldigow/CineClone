@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:BasePages  xmlns:views="clr-namespace:PacoteExtra.Views"
+                  xmlns="http://xamarin.com/schemas/2014/forms" 
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  xmlns:componentes="clr-namespace:PacoteExtra.Componentes" 
+                  xmlns:viewmodels="clr-namespace:PacoteExtra.ViewModels"
+                  xmlns:cupons="clr-namespace:PacoteExtra.Views.Cupons"
+                  x:Class="PacoteExtra.Views.Inicio.InicioPage">
+    <views:BasePages.BindingContext>
+        <viewmodels:InicioMVVM></viewmodels:InicioMVVM>
+    </views:BasePages.BindingContext>
+    <views:BasePages.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding Page1Visible}">
+                <componentes:VisualizadorProgramacaoCompleta VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding Page3Visible}">
+                <cupons:Cupons></cupons:Cupons>
+            </StackLayout>
+            <componentes:tabbetCustom  VerticalOptions="End" HorizontalOptions="FillAndExpand" Tapped1Comand="{Binding Guia1ToqueCommand}" Tapped2Comand="{Binding Guia2ToqueCommand}" Tapped3Comand="{Binding Guia3ToqueCommand}" Tapped4Comand="{Binding Guia4ToqueCommand}"/>
+        </StackLayout>
+    </views:BasePages.Content>
+</views:BasePages>

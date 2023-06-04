@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:componentes="clr-namespace:PacoteExtra.Componentes" xmlns:botao="clr-namespace:PacoteExtra.Componentes.ExemplosDeUso.Botao"
+             x:Class="PacoteExtra.Componentes.ExemplosDeUso.Botao.BotaoPage">
+    <ContentPage.BindingContext>
+        <botao:BotaoViewModel></botao:BotaoViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <componentes:BotaoFacil AoPressionar="{Binding IniciarCommand}" Texto="{Binding UmTexto}"></componentes:BotaoFacil>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:componentes="clr-namespace:PacoteExtra.Componentes" xmlns:dropdown="clr-namespace:PacoteExtra.Componentes.ExemplosDeUso.DropDown"
+             x:Class="PacoteExtra.Componentes.ExemplosDeUso.DropDown.DropDownPage">
+    <ContentPage.BindingContext>
+        <dropdown:DropDownPageViewModel></dropdown:DropDownPageViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <componentes:DropDown 
+                Titulo="{Binding TituloDropDown}" 
+                Descricao="{Binding DescricaoDropDown}"
+                ClickComand="{Binding ItemSelectedCommand}">
+            </componentes:DropDown>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

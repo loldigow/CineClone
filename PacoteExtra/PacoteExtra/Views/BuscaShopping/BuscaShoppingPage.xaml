@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePages  xmlns:views="clr-namespace:PacoteExtra.Views"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:componentes="clr-namespace:PacoteExtra.Componentes" xmlns:viewmodels="clr-namespace:PacoteExtra.ViewModels"
+                  x:Class="PacoteExtra.Views.BuscaShopping.BuscaShoppingPage">
+    <views:BasePages.BindingContext>
+        <viewmodels:BuscaShoppingViewModel></viewmodels:BuscaShoppingViewModel>
+    </views:BasePages.BindingContext>
+    <views:BasePages.Content>
+        <StackLayout>
+            <Label Text="Cinemas" 
+                   TextColor="{StaticResource CorTextosPrincipal}" 
+                   FontSize="30" 
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center" 
+                   Margin="0,25,0,15"></Label>
+            <componentes:SearchCustom TextoBusca="Buscar cinemas"></componentes:SearchCustom>
+            <componentes:NewCollectionViewFacil Template="{x:Static componentes:NewCollectionViewFacil.TemplateBuscaShopping}"
+                                             ItensOrigem="{Binding Shoppings}"
+                                             
+                                             ></componentes:NewCollectionViewFacil>
+        </StackLayout>
+    </views:BasePages.Content>
+</views:BasePages>

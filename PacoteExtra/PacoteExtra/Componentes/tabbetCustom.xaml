@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:componentes="clr-namespace:PacoteExtra.Componentes"
+             xmlns:enum="clr-namespace:PacoteExtra.Core.Enum"
+             x:Class="PacoteExtra.Componentes.tabbetCustom">
+  <ContentView.Content>
+      <StackLayout BackgroundColor="{StaticResource CorElementosInvertido}" Orientation="Horizontal" Padding="0,25" >
+            <componentes:LabelAwesome x:Name="Tabb1" Text="&#xf015;" HorizontalTextAlignment="Center" FontSize="36" HorizontalOptions="FillAndExpand" Style="{StaticResource LabelDefalDescricao}">
+                <componentes:LabelAwesome.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Static enum:TappedEnum.T1}"></TapGestureRecognizer>
+                </componentes:LabelAwesome.GestureRecognizers>
+            </componentes:LabelAwesome>
+            <componentes:LabelAwesome x:Name="Tabb2" Text="&#xf008;" HorizontalTextAlignment="Center" FontSize="36" HorizontalOptions="FillAndExpand" Style="{StaticResource LabelDefalDescricao}">
+                <componentes:LabelAwesome.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Static enum:TappedEnum.T2}"></TapGestureRecognizer>
+                </componentes:LabelAwesome.GestureRecognizers>
+            </componentes:LabelAwesome>
+            <componentes:LabelAwesome x:Name="Tabb3" Text="&#xf02b;" HorizontalTextAlignment="Center" FontSize="36" HorizontalOptions="FillAndExpand" Style="{StaticResource LabelDefalDescricao}">
+                <componentes:LabelAwesome.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Static enum:TappedEnum.T3}"></TapGestureRecognizer>
+                </componentes:LabelAwesome.GestureRecognizers>
+            </componentes:LabelAwesome>
+            <componentes:LabelAwesome x:Name="Tabb4" Text="&#xf007;" HorizontalTextAlignment="Center" FontSize="36" HorizontalOptions="FillAndExpand" Style="{StaticResource LabelDefalDescricao}">
+                <componentes:LabelAwesome.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="{Static enum:TappedEnum.T4}"></TapGestureRecognizer>
+                </componentes:LabelAwesome.GestureRecognizers>
+            </componentes:LabelAwesome>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

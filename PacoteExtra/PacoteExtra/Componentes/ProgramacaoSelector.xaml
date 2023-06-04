@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:componentes="clr-namespace:PacoteExtra.Componentes"
+             x:Class="PacoteExtra.Componentes.ProgramacaoSelector"
+             x:Name="ComponenteProgramacao" BackgroundColor="{StaticResource CorBackgroundSecundario}">
+  <ContentView.Content>
+      <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <componentes:DateTimeLineSwippe x:Name="DiasView"  Grid.Row="0" ></componentes:DateTimeLineSwippe>
+            <componentes:NewCollectionViewFacil Grid.Row="1"   
+                                                x:Name="ListaProgramacao" 
+                                                Nome="ListaProgramacao" 
+                                                Template="{x:Static componentes:NewCollectionViewFacil.ProgramacaoFilmeTemplate}"></componentes:NewCollectionViewFacil>
+
+        </Grid>
+  </ContentView.Content>
+</ContentView>

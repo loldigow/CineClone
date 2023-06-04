@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="PacoteExtra.Views.Cupons.Cupons">
+    <ContentView.Content>
+        <StackLayout>
+            <xct:TabView VerticalOptions="Start">
+                <xct:TabViewItem Text="Ingressos" TextColor="{StaticResource CorTextosPrincipal}" TextColorSelected="Yellow">
+                    <Label Text="Pagina de ingressos" TextColor="Green"></Label>
+                </xct:TabViewItem>
+                <xct:TabViewItem Text="Cupons" TextColor="{StaticResource CorTextosPrincipal}"  TextColorSelected="Yellow">
+                    <Label Text="Pagina de Cupons" Style="{StaticResource LabelDefalTitulo}"></Label>
+                </xct:TabViewItem>
+            </xct:TabView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

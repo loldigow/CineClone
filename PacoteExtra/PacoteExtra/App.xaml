@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PacoteExtra.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="CorBackgroundPrincipal">#e4e3e6</Color>
+            <Color x:Key="CorTextosPrincipal">#e4e3e6</Color>
+            <Color x:Key="CorElementosPrincipal">#e4e3e6</Color>
+
+            <Color x:Key="CorBackgroundSecundario">#293648</Color>
+            <Color x:Key="CorTextosPrincipalInvertido">#293648</Color>
+            <Color x:Key="CorElementosInvertido">#293648</Color>
+            <Color x:Key="CorBackGroundMaisClaro">#949aa3</Color>
+
+            <Style TargetType="Label" x:Key="LabelDefalTitulo">
+                <Setter Property="FontSize" Value="25"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource CorTextosPrincipal}"></Setter>
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelDefalTituloEscura">
+                <Setter Property="FontSize" Value="25"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource CorTextosPrincipalInvertido}"></Setter>
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelDefalDescricao">
+                <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource CorTextosPrincipal}"></Setter>
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelDefalDescricaoInvertido">
+                <Setter Property="FontSize" Value="15"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource CorTextosPrincipalInvertido}"></Setter>
+            </Style>
+
+
+            <Style TargetType="Button">
+                
+            </Style>
+        </ResourceDictionary>        
+    </Application.Resources>
+</Application>

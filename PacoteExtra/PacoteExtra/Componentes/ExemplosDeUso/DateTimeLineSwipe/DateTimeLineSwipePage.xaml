@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:componentes="clr-namespace:PacoteExtra.Componentes" xmlns:datetimelineswipe="clr-namespace:PacoteExtra.Componentes.ExemplosDeUso.DateTimeLineSwipe"
+             x:Class="PacoteExtra.Componentes.ExemplosDeUso.DateTimeLineSwipe.DateTimeLineSwipePage">
+    <ContentPage.BindingContext>
+        <datetimelineswipe:DateSwipeViewModel></datetimelineswipe:DateSwipeViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <componentes:DateTimeLineSwippe DataInicio="{Binding Inicio}" 
+                                            DataFim="{Binding Fim}"
+                                            AoSelecionarCommand="{Binding SelecioneiDiaCommand}"></componentes:DateTimeLineSwippe>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="PacoteExtra.Componentes.EntryCustom">
+  <ContentView.Content>
+        <Grid HeightRequest="65" BackgroundColor="{StaticResource CorBackgroundSecundario}">
+            <pancake:PancakeView x:Name="PancakeFrame" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0" Padding="0">
+                <pancake:PancakeView.Border>
+                    <pancake:Border Color="{StaticResource CorTextosPrincipal}" Thickness="1" ></pancake:Border>
+                </pancake:PancakeView.Border>
+                <Entry x:Name="Editor" FontSize="Title" TextChanged="Editor_TextChanged" TextColor="{StaticResource CorTextosPrincipal}" VerticalOptions="End" ></Entry>
+            </pancake:PancakeView>
+            <Label x:Name="LabelText" 
+                           TextColor="{StaticResource CorTextosPrincipal}" 
+                           FontSize="Medium" 
+                           VerticalOptions="Start"
+                           HorizontalOptions="Start"></Label>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

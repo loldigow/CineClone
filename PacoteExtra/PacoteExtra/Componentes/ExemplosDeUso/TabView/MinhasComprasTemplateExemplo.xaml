@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:componentes="clr-namespace:PacoteExtra.Componentes" 
+             xmlns:tabview="clr-namespace:PacoteExtra.Componentes.ExemplosDeUso.TabView"
+             BackgroundColor="{StaticResource CorBackgroundSecundario}"
+             x:Class="PacoteExtra.Componentes.ExemplosDeUso.TabView.MinhasComprasTemplateExemplo">
+    <ContentPage.BindingContext>
+        <tabview:MinhasComprasTemplateExemploMideModel></tabview:MinhasComprasTemplateExemploMideModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <componentes:NewCollectionViewFacil 
+                Template="MinhasCompras"
+                ItensOrigem="{Binding MinhasCompras}"></componentes:NewCollectionViewFacil>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
