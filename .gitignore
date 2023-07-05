@@ -9,3 +9,6 @@
 /Mock/obj
 /PacoteExtra/PacoteExtra/bin/Debug/netstandard2.0
 /PacoteExtra/PacoteExtra.Android/bin/Debug
+/PacoteExtra/PacoteExtra/obj
+/PacoteExtra/PacoteExtra.Android/obj
+/PacoteExtra/PacoteExtra.iOS/obj/iPhone/Debug
