@@ -15,6 +15,18 @@
             <Color x:Key="CorTextosPrincipalInvertido">#293648</Color>
             <Color x:Key="CorElementosInvertido">#293648</Color>
             <Color x:Key="CorBackGroundMaisClaro">#949aa3</Color>
+            <Color  x:Key="BackGroundTransparente">
+                <x:Arguments>
+                    <x:Double>.4</x:Double>
+                    <!-- R/255 -->
+                    <x:Double>.62</x:Double>
+                    <!-- G/255 -->
+                    <x:Double>.95</x:Double>
+                    <!-- B/255 -->
+                    <x:Double>.2</x:Double>
+                    <!-- A: 0.0-1.0 -->
+                </x:Arguments>
+            </Color>
 
             <Style TargetType="Label" x:Key="LabelDefalTitulo">
                 <Setter Property="FontSize" Value="25"></Setter>
@@ -31,6 +43,12 @@
                 <Setter Property="TextColor" Value="{StaticResource CorTextosPrincipal}"></Setter>
             </Style>
 
+            <Style TargetType="Label" x:Key="LabelTituloProgramacao">
+                <Setter Property="FontSize" Value="40"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource CorTextosPrincipal}"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+            </Style>
+
             <Style TargetType="Label" x:Key="LabelDefalDescricaoInvertido">
                 <Setter Property="FontSize" Value="15"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource CorTextosPrincipalInvertido}"></Setter>
@@ -38,8 +56,8 @@
 
 
             <Style TargetType="Button">
-                
+
             </Style>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,8 +1,13 @@
-﻿using PacoteExtra.Componentes.ExemplosDeUso.Botao;
+﻿using CinemaCore.Core.Interface;
+using CinemaCore.Core.Repository;
+using Mock.Repository;
+using PacoteExtra.Componentes.ExemplosDeUso;
+using PacoteExtra.Componentes.ExemplosDeUso.Botao;
 using PacoteExtra.Componentes.ExemplosDeUso.CronogramaProgramacaoselector;
 using PacoteExtra.Componentes.ExemplosDeUso.DateTimeLineSwipe;
 using PacoteExtra.Componentes.ExemplosDeUso.DropDown;
 using PacoteExtra.Componentes.ExemplosDeUso.ExemploCollectionView;
+using PacoteExtra.Componentes.ExemplosDeUso.Loading;
 using PacoteExtra.Componentes.ExemplosDeUso.SearchCustom;
 using PacoteExtra.Componentes.ExemplosDeUso.TabView;
 using PacoteExtra.Componentes.ExemplosDeUso.TappedCustom;
@@ -23,8 +28,8 @@ namespace PacoteExtra
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
+            DependencyService.RegisterSingleton<IFilialRepository>(new FilialRepositoryMock());
+            DependencyService.RegisterSingleton<IFilmeRepository>(new FilmeRepositoryMock());
             MainPage = new NavigationPage( new InicioPage());
         }
 

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePages  xmlns:views="clr-namespace:PacoteExtra.Views"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  xmlns:loading="clr-namespace:PacoteExtra.Componentes.ExemplosDeUso.Loading"
+                  NavigationPage.HasNavigationBar="False"
+                  x:Class="PacoteExtra.Componentes.ExemplosDeUso.Loading.LoadingPage">
+    <ContentPage.BindingContext>
+        <loading:LoadingMVVM></loading:LoadingMVVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Sou A PAge!"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</views:BasePages>

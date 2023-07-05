@@ -25,6 +25,7 @@ namespace PacoteExtra.Componentes
 
         public static readonly BindableProperty TemplateProperty = BindableProperty.Create(nameof(Template), typeof(string), typeof(NewCollectionViewFacil), null);
         public static readonly BindableProperty ReaderTemplateCollectionViewProperty = BindableProperty.Create(nameof(AgrupamentoHeader), typeof(string), typeof(NewCollectionViewFacil), null);
+        public static readonly BindableProperty LabelSemElementosProperty = BindableProperty.Create(nameof(LabelSemElementos), typeof(string), typeof(NewCollectionViewFacil), null);
         public static readonly BindableProperty ItensOrigemProperty = BindableProperty.Create(nameof(ItensOrigem), typeof(List<CollectionViewModel>), typeof(NewCollectionViewFacil), null);
         public static readonly BindableProperty AoPressionarProperty = BindableProperty.Create(nameof(AoPressionar), typeof(ICommand), typeof(NewCollectionViewFacil), null);
         public static readonly BindableProperty OrientacaoListaProperty = BindableProperty.Create(nameof(OrientacaoTemplate), typeof(ItemsLayoutOrientation), typeof(NewCollectionViewFacil), null);
@@ -47,6 +48,11 @@ namespace PacoteExtra.Componentes
         {
             get { return (string)GetValue(TemplateProperty); }
             set { SetValue(TemplateProperty, value); }
+        }
+        public string LabelSemElementos
+        {
+            get { return (string)GetValue(LabelSemElementosProperty); }
+            set { SetValue(LabelSemElementosProperty, value); }
         }
         public string Nome
         {
@@ -98,6 +104,10 @@ namespace PacoteExtra.Componentes
             if (propertyName == nameof(ItensOrigem))
             {
                 CarregueItemSource();
+            }
+            if(propertyName ==  nameof(LabelSemElementos))
+            {
+                LabelVazia.Text = LabelSemElementos;
             }
         }
         public DataTemplate ResolvaTemplate(string nomeTemplate)

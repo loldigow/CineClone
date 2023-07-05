@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacoteExtra.iOS", "PacoteEx
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PacoteExtra", "PacoteExtra\PacoteExtra\PacoteExtra.csproj", "{D5851740-F2E1-4B97-8053-8228263357B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaCore", "CinemaCore\CinemaCore.csproj", "{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mock", "Mock\Mock.csproj", "{95C99347-F624-45D4-9859-9D37BBDC8484}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,6 +98,42 @@ Global
 		{D5851740-F2E1-4B97-8053-8228263357B1}.Teste|iPhone.Build.0 = Release|Any CPU
 		{D5851740-F2E1-4B97-8053-8228263357B1}.Teste|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{D5851740-F2E1-4B97-8053-8228263357B1}.Teste|iPhoneSimulator.Build.0 = Release|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Release|iPhone.Build.0 = Release|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Teste|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Teste|Any CPU.Build.0 = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Teste|iPhone.ActiveCfg = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Teste|iPhone.Build.0 = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Teste|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{7EE12E41-06D5-4B4A-9B68-9419D2582A2E}.Teste|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Release|iPhone.Build.0 = Release|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Teste|Any CPU.ActiveCfg = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Teste|Any CPU.Build.0 = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Teste|iPhone.ActiveCfg = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Teste|iPhone.Build.0 = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Teste|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{95C99347-F624-45D4-9859-9D37BBDC8484}.Teste|iPhoneSimulator.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

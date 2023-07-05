@@ -4,11 +4,9 @@
                 xmlns:componentes="clr-namespace:PacoteExtra.Componentes"
                 xmlns:app="clr-namespace:PacoteExtra"
                 x:Class="PacoteExtra.Componentes.NewCollectionViewFacil">
-    <CollectionView.ItemTemplate>
-        <DataTemplate>
-            <Label Text="Nada para visualizar" HorizontalTextAlignment="Center" Style="{StaticResource LabelDefalDescricao}"></Label>
-        </DataTemplate>
-    </CollectionView.ItemTemplate>
+    <CollectionView.EmptyView>
+        <Label x:Name="LabelVazia" HorizontalTextAlignment="Center" Style="{StaticResource LabelDefalDescricao}"></Label>
+    </CollectionView.EmptyView>
 
     <CollectionView.Resources>
         <DataTemplate x:Key="Default">

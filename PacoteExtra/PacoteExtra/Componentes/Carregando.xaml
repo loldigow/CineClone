@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<extensions:PopupPage
+                   xmlns:extensions="http://rotorgames.com" 
+                   xmlns="http://xamarin.com/schemas/2014/forms"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   NavigationPage.HasNavigationBar="False"
+                   x:Class="PacoteExtra.Componentes.Carregando">
+    <extensions:PopupPage.Content>
+        <Frame  VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Black" CornerRadius="15">
+            <Grid>
+                <Image Source="loading.gif" VerticalOptions="Start" IsAnimationPlaying="true" Aspect="Fill"></Image>
+                <Label x:Name="LabelCarregando" VerticalOptions="End" HorizontalTextAlignment="Center"  Style="{StaticResource LabelDefalDescricao}"></Label>
+            </Grid>
+        </Frame>
+    </extensions:PopupPage.Content>
+</extensions:PopupPage>

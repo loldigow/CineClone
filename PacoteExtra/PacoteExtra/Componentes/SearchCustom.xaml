@@ -14,23 +14,17 @@
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label TextColor="{StaticResource CorTextosPrincipal}"  
-                       Text="&#xf002;" 
-                       VerticalOptions="CenterAndExpand" 
-                       FontSize="40"  
-                       Grid.Row="0" 
-                       Grid.Column="0" 
-                       Grid.RowSpan="2">
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="x:String">
-                            <On Platform="Android" Value="fa-solid-900.ttf#Font Awesome 5 Free Solid"/>
-                            <On Platform="iOS" Value="Font Awesome 5 Free"/>
-                        </OnPlatform>
-                    </Label.FontFamily>
-                    <Label.GestureRecognizers>
+                <componentes:LabelAwesome TextColor="{StaticResource CorBotaoIcones}"
+                                          Text="&#xf002;"
+                                          VerticalOptions="CenterAndExpand" 
+                                          FontSize="30"  
+                                          Grid.Row="0" 
+                                          Grid.Column="0" 
+                                          Grid.RowSpan="2">
+                    <componentes:LabelAwesome.GestureRecognizers>
                         <TapGestureRecognizer Tapped="NoClickDaLupa"></TapGestureRecognizer>
-                    </Label.GestureRecognizers>
-                </Label>
+                    </componentes:LabelAwesome.GestureRecognizers>
+                </componentes:LabelAwesome>
                 <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"  HeightRequest="50">
                     <componentes:EntryCustom x:Name="EntryPesquisa" CorBorda="Transparent"></componentes:EntryCustom>
                 </Grid>

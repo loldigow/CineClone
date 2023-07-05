@@ -1,14 +1,14 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CinemaCore.Core.Model;
+using CinemaCore.Core.Servico;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PacoteExtra.Componentes;
 using PacoteExtra.Views.BuscaShopping;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace PacoteExtra.ViewModels
@@ -16,44 +16,39 @@ namespace PacoteExtra.ViewModels
     [ObservableObject]
     partial class InicioMVVM : BaseViewModel
     {
-        [ObservableProperty]
-        GridLength tamanhoFrameIngressos;
+        #region Servicos
+        private readonly FilmeService _filmeService = new FilmeService();
+        private readonly ShoppingService _filialService = new ShoppingService();
+        #endregion
 
         [ObservableProperty]
-        GridLength tamanhoFrameFavoritos;
+        int pageSelected;
+        [ObservableProperty]
+        bool page1Visible;
+        [ObservableProperty]
+        bool page2Visible;
+        [ObservableProperty]
+        bool page3Visible;
+        [ObservableProperty]
+        bool page4Visible;
+        [ObservableProperty]
+        FilialCinemaModel filialSelecionada;
 
         [ObservableProperty]
-        List<CollectionViewModel> filmes;
-
+        List<CollectionViewModel> filmeList;
         [ObservableProperty]
-        List<CollectionViewModel> favoritos;
-
-        [ObservableProperty]
-        public bool page1Visible;
-
-        [ObservableProperty]
-        public bool page2Visible;
-
-        [ObservableProperty]
-        public bool page3Visible;
-
-        [ObservableProperty]
-        public bool page4Visible;
-
-
-
+        List<CollectionViewModel> favoritosList;
 
         [RelayCommand]
-        void PesquisarShopping()
+        public void CuponsClick()
         {
-            var searchShoppingPage = new BuscaShoppingPage();
-            App.Current.MainPage.Navigation.PushAsync(searchShoppingPage);
+            PageSelected = 3;
+            OnTabChanged(3);
         }
-
         [RelayCommand]
-        void CuponsClick(object objeto)
+        public async void PesquisaShopping()
         {
-
+            await App.Current.MainPage.Navigation.PushAsync(new BuscaShoppingPage());
         }
 
         [RelayCommand]
@@ -63,84 +58,88 @@ namespace PacoteExtra.ViewModels
         }
 
         [RelayCommand]
-        void FilmeClik(object filme)
+        async void CartazClick(object filme)
         {
+            if (filme is CollectionViewModel cartazSelecionado)
+            {
+
+
+                PageSelected = 2;
+
+            }
 
         }
+
+
 
         public InicioMVVM()
         {
-            Filmes = new List<CollectionViewModel>();
-            Favoritos =  new List<CollectionViewModel>();
             page1Visible = true;
+            PageSelected = 1;
+            Task.Run(async () =>
+            {
+
+
+            });
         }
+
+        private void CarregueFilialFavorita()
+        {
+            throw new NotImplementedException();
+        }
+
         public async override void EventoAoAparecer()
         {
             await Task.Run(() =>
             {
-                var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-                CrieDadosfake();
+                var filial = _filialService.ObtenhaUltimaFiliaBuscada();
+                var listaFilmes = _filmeService.ObtenhaBilheteriaDeFilmes();
+                var listaDefavoritos = _filmeService.ObtenhaBilheteriesAdicionadasAoFavorito();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    FilmeList = listaFilmes.Select(x => new CollectionViewModel()
+                    {
+                        Id = x.Codigo,
+                        Descricao = x.UrlImagem
+                    }).ToList();
+                    FavoritosList = listaDefavoritos.Select(x => new CollectionViewModel()
+                    {
+                        Id = x.Codigo,
+                        Descricao = x.UrlImagem
+                    }).ToList();
+                });
+
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    FilialSelecionada = filial;
+                });
             });
         }
 
         private void CrieDadosfake()
         {
-            
-        }
-
-        partial void OnFavoritosChanged(List<CollectionViewModel> value)
-        {
-           // TamanhoFrameFavoritos = ExtraiaGridTamanho(Favoritos.Count());
-        }
-
-        [RelayCommand]
-        public void Guia1Toque()
-        {
-            Page1Visible = true;
-            Page2Visible = false;
-            Page3Visible = false;
-            Page4Visible = false;
 
         }
 
         [RelayCommand]
-        public void Guia2Toque()
+        public void OnTabChanged(object objeto)
         {
-            Page1Visible = false;
-            Page2Visible = true;
-            Page3Visible = false;
-            Page4Visible = false;
-        }
+            var tabIndex = (int)objeto;
+            List<string> tabs = new List<string>()
+            {
+                nameof(Page1Visible),
+                nameof(Page2Visible),
+                nameof(Page3Visible),
+                nameof(Page4Visible),
+            };
+            for (int i = 0; i < tabs.Count; i++)
+            {
+                var este = typeof(InicioMVVM);
+                PropertyInfo piInstance = este.GetProperty(tabs.ElementAt(i));
+                piInstance.SetValue(this, i + 1 == tabIndex);
+            }
 
-        [RelayCommand]
-        public void Guia3Toque()
-        {
-            Page1Visible = false;
-            Page2Visible = false;
-            Page3Visible = true;
-            Page4Visible = false;
-        }
-
-        [RelayCommand]
-        public void Guia4Toque()
-        {
-            Page1Visible = false;
-            Page2Visible = false;
-            Page3Visible = false;
-            Page4Visible = true;
-        }
-
-
-        partial void OnFilmesChanged(List<CollectionViewModel> value)
-        {
-            
         }
     }
-
-    public class FilmeModel
-    {
-        public int Id { get; set; }
-        public string Imagem { get; set; }
-    }
-
 }

@@ -4,20 +4,40 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
                   xmlns:componentes="clr-namespace:PacoteExtra.Componentes" 
                   xmlns:viewmodels="clr-namespace:PacoteExtra.ViewModels"
-                  xmlns:cupons="clr-namespace:PacoteExtra.Views.Cupons"
+                  NavigationPage.HasNavigationBar="False"
+                  x:Name="inicioPage"
+                  xmlns:cupons="clr-namespace:PacoteExtra.Views.Cupons" 
+                  xmlns:programacao="clr-namespace:PacoteExtra.Views.ProgramacaoCompleta" 
+                  xmlns:visualizacaogeral="clr-namespace:PacoteExtra.Views.VisualizacaoGeral"
                   x:Class="PacoteExtra.Views.Inicio.InicioPage">
     <views:BasePages.BindingContext>
         <viewmodels:InicioMVVM></viewmodels:InicioMVVM>
     </views:BasePages.BindingContext>
     <views:BasePages.Content>
-        <StackLayout>
-            <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding Page1Visible}">
-                <componentes:VisualizadorProgramacaoCompleta VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout Padding="15,15,15,0">
+                <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding Page1Visible}">
+                    <visualizacaogeral:ProgramacaoGeral 
+                    VerticalOptions="FillAndExpand" 
+                    HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding Page2Visible}" 
+                         VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand"
+                         IsVisible="{Binding Page2Visible}">
+                </StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand" 
+                         IsVisible="{Binding Page3Visible}">
+                    <cupons:Cupons>
+                    </cupons:Cupons>
+                </StackLayout>
             </StackLayout>
-            <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding Page3Visible}">
-                <cupons:Cupons></cupons:Cupons>
-            </StackLayout>
-            <componentes:tabbetCustom  VerticalOptions="End" HorizontalOptions="FillAndExpand" Tapped1Comand="{Binding Guia1ToqueCommand}" Tapped2Comand="{Binding Guia2ToqueCommand}" Tapped3Comand="{Binding Guia3ToqueCommand}" Tapped4Comand="{Binding Guia4ToqueCommand}"/>
+            <componentes:tabbetCustom VerticalOptions="EndAndExpand"
+                                      TapChanged="{Binding TabChangedCommand}"
+                                      SelectedIndex="{Binding PageSelected, Mode=TwoWay}">
+
+            </componentes:tabbetCustom>
         </StackLayout>
     </views:BasePages.Content>
 </views:BasePages>

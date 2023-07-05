@@ -3,57 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:componentes="clr-namespace:PacoteExtra.Componentes"
              x:Class="PacoteExtra.Componentes.VisualizadorProgramacaoCompleta">
     <ContentView.Content>
-        <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout>
-                <StackLayout>
-                    <componentes:DropDown Titulo="Cinema" Descricao="Cineflix Aparecida de Goiânia"  ClickComand="{Binding PesquisaShoppingCommand}" Margin="0,25"></componentes:DropDown>
-                    <Frame BackgroundColor="Yellow" Padding="30">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding CuponsClickCommand}"></TapGestureRecognizer>
-                        </Frame.GestureRecognizers>
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
-                            <componentes:LabelAwesome VerticalTextAlignment="Center" Text="&#xf145;" Style="{StaticResource LabelDefalDescricaoInvertido}" Margin="0,0,30,0"></componentes:LabelAwesome>
-                            <Label Text="Cupons" Style="{StaticResource LabelDefalDescricaoInvertido}" FontAttributes="Bold"></Label>
-                        </StackLayout>
-                    </Frame>
-                </StackLayout>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="500"></RowDefinition>
-                        <RowDefinition Height="500"></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <StackLayout Padding="0,25" Grid.Row="0" >
-                        <Label Text="Ingressos" 
-                               Style="{StaticResource LabelDefalTitulo}" 
-                               FontAttributes="Bold"></Label>
-                        <Frame BackgroundColor="Transparent" Padding="0" >
-                            <componentes:NewCollectionViewFacil Template="{x:Static componentes:NewCollectionViewFacil.TemplateListaImagem}" 
-                                                         OrientacaoTemplate="Horizontal"
-                                                         x:Name="ListaProgramacao"
-                                                         ItensOrigem="{Binding FilmeList}"
-                                                         AoPressionar="{Binding FilmeClikCommand}"   >
-                            </componentes:NewCollectionViewFacil>
-                        </Frame>
-                        <componentes:BotaoFacil 
-                        Texto="Programação completa" 
-                        Margin="25,0" 
-                        CorBorda="{StaticResource CorBackgroundPrincipal}"
-                        AoPressionar="{Binding ProgramacaoCompletaClickCommand}"
-                        ></componentes:BotaoFacil>
-                    </StackLayout>
-                    <StackLayout Grid.Row="1" Padding="0,25" >
-                        <Label Text="Favoritos" Style="{StaticResource LabelDefalTitulo}" FontAttributes="Bold"></Label>
-                        <Frame BackgroundColor="Transparent" >
-                            <componentes:NewCollectionViewFacil Template="{x:Static componentes:NewCollectionViewFacil.TemplateListaImagem}"
-                                                             OrientacaoTemplate="Horizontal"
-                                                             ItensOrigem="{Binding FavoritosList}"
-                                                             AoPressionar="{Binding FilmeClikCommand}">
-                            </componentes:NewCollectionViewFacil>
-                        </Frame>
-                    </StackLayout>
-                </Grid>
-            </StackLayout>
-        </ScrollView>
+       
     </ContentView.Content>
 </ContentView>

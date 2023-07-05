@@ -1,0 +1,11 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/CinemaCore/bin/Debug/netstandard2.0
+/CinemaCore/obj
+/Mock/bin/Debug/netstandard2.0
+/Mock/obj
+/PacoteExtra/PacoteExtra/bin/Debug/netstandard2.0
+/PacoteExtra/PacoteExtra.Android/bin/Debug

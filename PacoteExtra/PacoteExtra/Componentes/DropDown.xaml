@@ -12,7 +12,7 @@
                     <Label x:Name="LabelTitulo" Style="{StaticResource LabelDefalTitulo}"></Label>
                     <Label x:Name="LabelDescricao" Style="{StaticResource LabelDefalDescricao}"></Label>
                 </StackLayout>
-                <componentes:LabelAwesome Text="&#xf078;" FontSize="36" VerticalOptions="CenterAndExpand" Style="{StaticResource LabelDefalDescricao}"/>
+                <componentes:LabelAwesome Text="&#xf078;" FontSize="36" VerticalOptions="CenterAndExpand" TextColor="{StaticResource CorBotaoIcones}"/>
             </StackLayout>
       </Frame>
   </ContentView.Content>

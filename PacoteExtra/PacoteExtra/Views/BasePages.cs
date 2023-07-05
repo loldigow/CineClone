@@ -13,7 +13,6 @@ namespace PacoteExtra.Views
         public BaseViewModel _viewModel => (BaseViewModel)this.BindingContext;
         protected override void OnAppearing()
         {
-            Content.Margin = 15;
             BackgroundColor = (Color)Application.Current.Resources["CorBackgroundSecundario"];
             base.OnAppearing();
             if (_viewModel != null)

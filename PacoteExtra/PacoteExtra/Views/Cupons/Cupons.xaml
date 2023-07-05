@@ -6,7 +6,7 @@
     <ContentView.Content>
         <StackLayout>
             <xct:TabView VerticalOptions="Start">
-                <xct:TabViewItem Text="Ingressos" TextColor="{StaticResource CorTextosPrincipal}" TextColorSelected="Yellow">
+                <xct:TabViewItem Text="Ingressos" TextColor="{StaticResource CorTextosPrincipal}" TextColorSelected="Yellow" BadgeBackgroundColorSelected="White" >
                     <Label Text="Pagina de ingressos" TextColor="Green"></Label>
                 </xct:TabViewItem>
                 <xct:TabViewItem Text="Cupons" TextColor="{StaticResource CorTextosPrincipal}"  TextColorSelected="Yellow">
