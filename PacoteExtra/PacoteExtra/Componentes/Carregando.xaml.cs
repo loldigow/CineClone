@@ -35,9 +35,20 @@ namespace PacoteExtra.Componentes
             }
             finally
             {
-                Device.BeginInvokeOnMainThread(() => { App.Current.MainPage.Navigation.PopPopupAsync(); });
+                //if(App.Current.MainPage.Navigation.)
+                Device.BeginInvokeOnMainThread(() => { App.Current.MainPage.Navigation.RemovePopupPageAsync(carregandoPage); });
             }
 
+        }
+
+        protected override bool OnBackgroundClicked()
+        {
+            return false;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return false;
         }
     }
 }

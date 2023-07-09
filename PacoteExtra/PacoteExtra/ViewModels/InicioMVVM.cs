@@ -3,7 +3,9 @@ using CinemaCore.Core.Servico;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PacoteExtra.Componentes;
+using PacoteExtra.Core.Util;
 using PacoteExtra.Views.BuscaShopping;
+using PacoteExtra.Views.ProgrtamacaoDeFilme;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,41 +62,36 @@ namespace PacoteExtra.ViewModels
         [RelayCommand]
         async void CartazClick(object filme)
         {
-            if (filme is CollectionViewModel cartazSelecionado)
-            {
-
-
-                PageSelected = 2;
-
-            }
-
+            SingletonParametros.GetInstance().AdicioneParametros(nameof(programacaoFilme), filme);
+            await App.Current.MainPage.Navigation.PushAsync(new programacaoFilme());
         }
-
-
 
         public InicioMVVM()
         {
             page1Visible = true;
             PageSelected = 1;
-            Task.Run(async () =>
-            {
-
-
-            });
         }
 
         private void CarregueFilialFavorita()
         {
-            throw new NotImplementedException();
+
         }
 
         public async override void EventoAoAparecer()
         {
-            await Task.Run(() =>
+
+            await Carregando.CarregueEnquandoAcaoEstiverRodando(async () =>
             {
-                var filial = _filialService.ObtenhaUltimaFiliaBuscada();
-                var listaFilmes = _filmeService.ObtenhaBilheteriaDeFilmes();
-                var listaDefavoritos = _filmeService.ObtenhaBilheteriesAdicionadasAoFavorito();
+
+                var filial = await _filialService.ObtenhaUltimaFiliaBuscada();
+                var listaFilmes = await _filmeService.ObtenhaBilheteriaDeFilmesPorFilial(filial.Codigo);
+                var listaDefavoritos = await _filmeService.ObtenhaBilheteriesAdicionadasAoFavoritoAsync();
+
+                var favoritos = from favorito in listaDefavoritos
+                            join filme in listaFilmes
+                        on favorito.Codigo equals filme.Codigo
+                            select filme;
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     FilmeList = listaFilmes.Select(x => new CollectionViewModel()
@@ -102,24 +99,14 @@ namespace PacoteExtra.ViewModels
                         Id = x.Codigo,
                         Descricao = x.UrlImagem
                     }).ToList();
-                    FavoritosList = listaDefavoritos.Select(x => new CollectionViewModel()
+                    FavoritosList = favoritos.Select(x => new CollectionViewModel()
                     {
                         Id = x.Codigo,
                         Descricao = x.UrlImagem
                     }).ToList();
-                });
-
-
-                Device.BeginInvokeOnMainThread(() =>
-                {
                     FilialSelecionada = filial;
                 });
-            });
-        }
-
-        private void CrieDadosfake()
-        {
-
+            }, "Carregando dados");
         }
 
         [RelayCommand]

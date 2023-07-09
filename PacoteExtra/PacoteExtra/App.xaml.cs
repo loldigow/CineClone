@@ -1,4 +1,5 @@
 ﻿using CinemaCore.Core.Interface;
+using CinemaCore.Core.Model;
 using CinemaCore.Core.Repository;
 using Mock.Repository;
 using PacoteExtra.Componentes.ExemplosDeUso;
@@ -7,14 +8,18 @@ using PacoteExtra.Componentes.ExemplosDeUso.CronogramaProgramacaoselector;
 using PacoteExtra.Componentes.ExemplosDeUso.DateTimeLineSwipe;
 using PacoteExtra.Componentes.ExemplosDeUso.DropDown;
 using PacoteExtra.Componentes.ExemplosDeUso.ExemploCollectionView;
+using PacoteExtra.Componentes.ExemplosDeUso.Favorito;
 using PacoteExtra.Componentes.ExemplosDeUso.Loading;
 using PacoteExtra.Componentes.ExemplosDeUso.SearchCustom;
 using PacoteExtra.Componentes.ExemplosDeUso.TabView;
 using PacoteExtra.Componentes.ExemplosDeUso.TappedCustom;
+using PacoteExtra.MeuMapper;
+using PacoteExtra.Models;
 using PacoteExtra.Services;
 using PacoteExtra.Views;
 using PacoteExtra.Views.BuscaShopping;
 using PacoteExtra.Views.Inicio;
+using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -30,6 +35,8 @@ namespace PacoteExtra
             InitializeComponent();
             DependencyService.RegisterSingleton<IFilialRepository>(new FilialRepositoryMock());
             DependencyService.RegisterSingleton<IFilmeRepository>(new FilmeRepositoryMock());
+            DependencyService.RegisterSingleton<IFavoritosRepository>(new FavoritosMock());
+            Mapper.CrieMapeamento();
             MainPage = new NavigationPage( new InicioPage());
         }
 

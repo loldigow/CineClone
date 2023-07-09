@@ -12,6 +12,7 @@
             <Color x:Key="CorElementosPrincipal">#e4e3e6</Color>
 
             <Color x:Key="CorBackgroundSecundario">#293648</Color>
+            <Color x:Key="CorBotaoIcones">#e6e600</Color>
             <Color x:Key="CorTextosPrincipalInvertido">#293648</Color>
             <Color x:Key="CorElementosInvertido">#293648</Color>
             <Color x:Key="CorBackGroundMaisClaro">#949aa3</Color>

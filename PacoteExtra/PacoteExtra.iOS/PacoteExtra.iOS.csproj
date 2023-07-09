@@ -161,4 +161,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\loading.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\uncheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check.png" />
+  </ItemGroup>
 </Project>
