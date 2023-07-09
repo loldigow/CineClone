@@ -13,3 +13,5 @@
 /PacoteExtra/PacoteExtra.Android/obj
 /PacoteExtra/PacoteExtra.iOS/obj/iPhone/Debug
 /PacoteExtra/PacoteExtra.iOS/obj
+/PacoteExtra/PacoteExtra.iOS/bin/iPhone/Debug
+/PacoteExtra/PacoteExtra.Android/Resources/Resource.designer.cs
