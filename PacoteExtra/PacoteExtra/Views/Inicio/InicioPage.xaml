@@ -7,7 +7,6 @@
                   NavigationPage.HasNavigationBar="False"
                   x:Name="inicioPage"
                   xmlns:cupons="clr-namespace:PacoteExtra.Views.Cupons" 
-                  xmlns:programacao="clr-namespace:PacoteExtra.Views.ProgramacaoCompleta" 
                   xmlns:visualizacaogeral="clr-namespace:PacoteExtra.Views.VisualizacaoGeral"
                   x:Class="PacoteExtra.Views.Inicio.InicioPage">
     <views:BasePages.BindingContext>

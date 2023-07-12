@@ -16,6 +16,12 @@ namespace PacoteExtra.Componentes
         public static BindableProperty ClickComandProperty = BindableProperty.Create(nameof(ClickComand), typeof(ICommand), typeof(DropDown), null);
         public static BindableProperty DescricaoProperty = BindableProperty.Create(nameof(Descricao), typeof(string), typeof(DropDown), null);
         public static BindableProperty TituloProperty = BindableProperty.Create(nameof(Titulo), typeof(string), typeof(DropDown), null);
+        public static BindableProperty CorDeFundoProperty = BindableProperty.Create(nameof(CorDeFundo), typeof(Color), typeof(DropDown), null);
+        public Color CorDeFundo
+        {
+            get { return (Color)GetValue(CorDeFundoProperty); }
+            set { SetValue(CorDeFundoProperty, value); }
+        }
         public string Titulo
         {
             get { return (string)GetValue(TituloProperty); }
@@ -37,6 +43,10 @@ namespace PacoteExtra.Componentes
             if (propertyName == nameof(Titulo))
             {
                 LabelTitulo.Text = Titulo;
+            }
+            if (propertyName == nameof(CorDeFundo))
+            {
+                Frame.BackgroundColor = CorDeFundo;
             }
             if (propertyName == nameof(Descricao))
             {

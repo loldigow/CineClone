@@ -7,7 +7,7 @@
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout>
                 <StackLayout>
-                    <componentes:DropDown Titulo="Cinema" Descricao="{Binding FilialSelecionada.Descricao}"  ClickComand="{Binding PesquisaShoppingCommand}" Margin="0,25"></componentes:DropDown>
+                    <componentes:DropDown Titulo="Cinema" Descricao="{Binding FilialSelecionada.Descricao}"  ClickComand="{Binding PesquisaShoppingCommand}" ></componentes:DropDown>
                     <Frame BackgroundColor="{StaticResource CorBotaoIcones}" x:Name="Cupombtn" Padding="30">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding CuponsClickCommand}"></TapGestureRecognizer>

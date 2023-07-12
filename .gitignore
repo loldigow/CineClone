@@ -13,3 +13,8 @@
 /PacoteExtra/PacoteExtra.Android/obj
 /PacoteExtra/PacoteExtra.iOS/obj/iPhone/Debug
 /PacoteExtra/PacoteExtra.iOS/obj
+/PacoteExtra/PacoteExtra.iOS/bin/iPhone/Debug
+/PacoteExtra/PacoteExtra.Android/Resources/Resource.designer.cs
+/CinemaCore/bin/Debug/netstandard2.1
+/Mock/bin/Debug/netstandard2.1
+/PacoteExtra/PacoteExtra/bin/Debug/netstandard2.1

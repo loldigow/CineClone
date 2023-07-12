@@ -27,7 +27,7 @@ namespace PacoteExtra.ViewModels
             if (shopping is CollectionViewModel model)
             {
                 _filialService.MarqueSelecaoDeFilial(model.Id);
-                App.Current.MainPage.Navigation.PopAsync();
+                await App.Current.MainPage.Navigation.PopAsync();
             }
         }
 
@@ -52,7 +52,7 @@ namespace PacoteExtra.ViewModels
         public async Task PesquisaShopping(object texto)
         {
             var textoSelecionado = (string)texto;
-            var listaFiltrada = (await _filialService.ObtenhaPorDescricaoAsync(string.Empty)).Select(x => new CollectionViewModel
+            var listaFiltrada = (await _filialService.ObtenhaPorDescricaoAsync(textoSelecionado)).Select(x => new CollectionViewModel
             {
                 Id = x.Codigo,
                 Titulo = x.Descricao,
@@ -61,7 +61,7 @@ namespace PacoteExtra.ViewModels
                 Descricao2 = $"{x.Endereco} - {x.Estado}"
             }).ToList();
 
-            var ultimoSelecionado = _filialService.ObtenhaUltimaFiliaBuscada();
+            var ultimoSelecionado = await _filialService.ObtenhaUltimaFiliaBuscada();
             listaFiltrada.ForEach(x => { x.PropriedadeBoleana = x.Id == ultimoSelecionado.Codigo; });
 
             Device.BeginInvokeOnMainThread(() =>

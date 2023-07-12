@@ -16,9 +16,9 @@ namespace CinemaCore.Core.Servico
             shoppingRepositoty = DependencyService.Get<IFilialRepository>();
         }
 
-        public FilialCinemaModel ObtenhaUltimaFiliaBuscada()
+        public async Task<FilialCinemaModel> ObtenhaUltimaFiliaBuscada()
         {
-            return shoppingRepositoty.ObtenhaUltimoCinema();
+            return await shoppingRepositoty.ObtenhaUltimoCinema();
         }
 
         public void MarqueSelecaoDeFilial(int codigo)
@@ -28,8 +28,9 @@ namespace CinemaCore.Core.Servico
 
         public async Task<List<FilialCinemaModel>> ObtenhaPorDescricaoAsync(string descricao)
         {
-            await Task.Delay(5000);
-            return shoppingRepositoty.ObtenhaPorDescricao(descricao);
+            return await shoppingRepositoty.ObtenhaPorDescricao(descricao);
         }
+
+      
     }
 }
