@@ -69,7 +69,8 @@ namespace Mock.Repository
         public async Task<FilmeModel> ObtenhaDetalhesFilme(int codigoFilme)
         {
             await Task.Delay(1000);
-            return _filmes.First(x => x.Codigo == codigoFilme);
+            var teste = _filmes.First(x => x.Codigo == codigoFilme);
+            return teste;
         }
 
     }

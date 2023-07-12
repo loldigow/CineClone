@@ -14,16 +14,16 @@
 
             <StackLayout>
                 <Grid>
-                    <Image Margin="0,100,0,0" Source="https://i0.wp.com/animagos.com.br/wp-content/uploads/2019/01/DVD-COG-v1.png?resize=759%2C1080" Aspect="AspectFill" HeightRequest="500"></Image>
+                    <Image Margin="0,80,0,0" Source="{Binding FilmeModel.UrlImagem}" Aspect="AspectFill" HeightRequest="500"></Image>
 
-                    <componentes:LabelAwesome Margin="30"  Text="&#xf053;" 
+                    <componentes:LabelAwesome Margin="20"  Text="&#xf053;" 
                                    Style="{StaticResource LabelDefalTitulo}" >
                         <componentes:LabelAwesome.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding VoltarCommand}"></TapGestureRecognizer>
                         </componentes:LabelAwesome.GestureRecognizers>
                     </componentes:LabelAwesome>
                     <componentes:Favorito  VerticalOptions="Start" 
-                                           Margin="30" 
+                                           Margin="20" 
                                            Tamanho="30" 
                                            Largura="30" 
                                            HorizontalOptions="End"
@@ -34,20 +34,21 @@
                 </Grid>
                 <StackLayout Padding="25,15">
                     <StackLayout Orientation="Horizontal" Margin="0">
-                        <StackLayout Spacing="0">
+                        <StackLayout Spacing="0" HorizontalOptions="StartAndExpand">
                             <Label Text="Sinopse" Style="{StaticResource LabelDefalDescricao}" FontAttributes="Bold" HorizontalOptions="StartAndExpand"></Label>
                             <Label Text="{Binding FilmeModel.DescricaoTipoETempo}" TextColor="{StaticResource CorBackGroundMaisClaro}"></Label>
                         </StackLayout>
                         <StackLayout VerticalOptions="Center" HorizontalOptions="End">
-                            <Frame BackgroundColor="{Binding FilmeModel.Classificacao.CorClassificacao}" CornerRadius="15">
-                                <Label Text="{Binding FilmeModel.Classificacao.Abreviacao}"></Label>
+                            <Frame BackgroundColor="{Binding FilmeModel.Classificacao.CorClassificacao}" CornerRadius="15" Padding="15,5">
+                                <Label Text="{Binding FilmeModel.Classificacao.Abreviacao}"  TextColor="{StaticResource Branco}" FontSize="20"  FontAttributes="Bold"></Label>
                             </Frame>
                         </StackLayout>
                     </StackLayout>
-                    <Label Text="Conheça os moradores da cidade Elementos" TextColor="{StaticResource CorBackGroundMaisClaro}" Margin="0,25"></Label>
-                    <Label Margin="0,10" TextColor="{StaticResource CorBackGroundMaisClaro}" TextDecorations="Underline" Text="Leia mais"></Label>
+                    <componentes:JustifyLabel JustifyText="True" Text="{Binding FilmeModel.Sinopse}" FontSize="Body"  TextColor="{StaticResource Branco}" Margin="0,25"></componentes:JustifyLabel>
+                    <Label Margin="0,10" TextColor="{StaticResource CorBackGroundMaisClaro}" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Start" TextDecorations="Underline" Text="Leia mais"></Label>
                 </StackLayout>
                 <componentes:DropDown Titulo="Cinema"  CorDeFundo="#2f3d51" Descricao="{Binding FilialSelecionada.Descricao}"  ClickComand="{Binding TrocarFilialCommand}" Margin="0,25"></componentes:DropDown>
+                <componentes:ProgramacaoSelector></componentes:ProgramacaoSelector>
             </StackLayout>
 
         </ScrollView>
