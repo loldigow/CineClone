@@ -36,6 +36,7 @@ namespace PacoteExtra
             DependencyService.RegisterSingleton<IFilialRepository>(new FilialRepositoryMock());
             DependencyService.RegisterSingleton<IFilmeRepository>(new FilmeRepositoryMock());
             DependencyService.RegisterSingleton<IFavoritosRepository>(new FavoritosMock());
+            DependencyService.RegisterSingleton<ISessaoRepository>(new SessaoRepositoryMock());
             Mapper.CrieMapeamento();
             MainPage = new NavigationPage( new InicioPage());
         }

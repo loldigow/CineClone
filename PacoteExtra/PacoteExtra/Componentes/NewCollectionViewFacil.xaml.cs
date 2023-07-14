@@ -133,7 +133,7 @@ namespace PacoteExtra.Componentes
             }
             else
             {
-                //CarregueTemplateVazio();
+                ItemsSource = null;
             }
         }
 
@@ -217,6 +217,6 @@ namespace PacoteExtra.Componentes
 
        
         [ObservableProperty]
-        string corElemento;
+        Xamarin.Forms.Color corElemento;
     }
 }

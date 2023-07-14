@@ -26,7 +26,7 @@ namespace CinemaCore.Core.Model
 
         public static ClassificacaoModel CrieClassificacaoPara10Anos()
         {
-            return new ClassificacaoModel("Não recomendado para menores de 10 anos", "10+","Conteúdo violento ou linguagem inapropiada para crianças, ainda que em menor intensidade", Xamarin.Forms.Color.FromHex("#00cdff"));
+            return new ClassificacaoModel("Não recomendado para menores de 10 anos", "10+","Conteúdo violento ou linguagem inapropiada para crianças, ainda que em menor intensidade", Xamarin.Forms.Color.FromHex("#bf9800"));
         }
 
         public static ClassificacaoModel CrieClassificacaoPara12Anos()

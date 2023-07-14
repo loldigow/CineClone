@@ -33,6 +33,9 @@
       <SubType>Code</SubType>
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Views\ProgrtamacaoDeFilme\programacaoFilme.xaml.cs">
+      <DependentUpon>ProgramacaoFilme.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -115,7 +118,7 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ProgrtamacaoDeFilme\programacaoFilme.xaml">
+    <EmbeddedResource Update="Views\ProgrtamacaoDeFilme\ProgramacaoFilme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\VisualizacaoGeral\ProgramacaoGeral.xaml">

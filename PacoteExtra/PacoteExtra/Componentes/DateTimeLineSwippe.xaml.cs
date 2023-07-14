@@ -54,7 +54,7 @@ namespace PacoteExtra.Componentes
                 foreach (var dia in ListaDias.ItemsSource)
                 {
                     var diaModel = (CollectionViewModel)dia;
-                    diaModel.CorElemento = item == dia ? "#FFFFFF" : "#949aa3";
+                    diaModel.CorElemento = item == dia ? Xamarin.Forms.Color.FromHex("#FFFFFF") : Xamarin.Forms.Color.FromHex("#949aa3");
                 }
                 if (AoSelecionarCommand?.CanExecute(item) ?? false)
                 {
@@ -75,12 +75,13 @@ namespace PacoteExtra.Componentes
                     dias.Add(new CollectionViewModel
                     {
                         Id = i,
-                        CorElemento = i == 0 ? "#FFFFFF" : "#949aa3",
+                        CorElemento = i == 0 ? Xamarin.Forms.Color.FromHex("#FFFFFF") : Xamarin.Forms.Color.FromHex("#949aa3"),
                         Titulo = inicio.AddDays(i).ToString("ddd", CultureInfo.CurrentCulture),
-                        Descricao = inicio.AddDays(i).ToString("dd/mm")
+                        Descricao = inicio.AddDays(i).ToString("dd/MM")
                     });
                 }
                 ListaDias.ItensOrigem = dias;
+                ExecuteNaSelecao(dias.FirstOrDefault());
             }
         }
     }

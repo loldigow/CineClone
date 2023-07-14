@@ -5,7 +5,7 @@
              xmlns:componentes="clr-namespace:PacoteExtra.Componentes" 
              xmlns:viewmodels="clr-namespace:PacoteExtra.ViewModels"
              NavigationPage.HasNavigationBar="False"
-             x:Class="PacoteExtra.Views.ProgrtamacaoDeFilme.programacaoFilme">
+             x:Class="PacoteExtra.Views.ProgrtamacaoDeFilme.ProgramacaoFilme">
     <ContentPage.BindingContext>
         <viewmodels:ProgramacaoFilmeViewModel></viewmodels:ProgramacaoFilmeViewModel>
     </ContentPage.BindingContext>
@@ -48,7 +48,7 @@
                     <Label Margin="0,10" TextColor="{StaticResource CorBackGroundMaisClaro}" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Start" TextDecorations="Underline" Text="Leia mais"></Label>
                 </StackLayout>
                 <componentes:DropDown Titulo="Cinema"  CorDeFundo="#2f3d51" Descricao="{Binding FilialSelecionada.Descricao}"  ClickComand="{Binding TrocarFilialCommand}" Margin="0,25"></componentes:DropDown>
-                <componentes:ProgramacaoSelector></componentes:ProgramacaoSelector>
+                <componentes:ProgramacaoSelector Programacoes="{Binding Programacao}"></componentes:ProgramacaoSelector>
             </StackLayout>
 
         </ScrollView>

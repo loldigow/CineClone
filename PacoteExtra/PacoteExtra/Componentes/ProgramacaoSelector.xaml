@@ -11,9 +11,12 @@
             </Grid.RowDefinitions>
             <componentes:DateTimeLineSwippe x:Name="DiasView"  Grid.Row="0" ></componentes:DateTimeLineSwippe>
             <componentes:NewCollectionViewFacil Grid.Row="1"   
+                                                
                                                 x:Name="ListaProgramacao" 
+                                                LabelSemElementos="Sem programacão"
                                                 Nome="ListaProgramacao" 
-                                                Template="{x:Static componentes:NewCollectionViewFacil.ProgramacaoFilmeTemplate}"></componentes:NewCollectionViewFacil>
+                                                Template="{x:Static componentes:NewCollectionViewFacil.ProgramacaoFilmeTemplate}">
+            </componentes:NewCollectionViewFacil>
 
         </Grid>
   </ContentView.Content>

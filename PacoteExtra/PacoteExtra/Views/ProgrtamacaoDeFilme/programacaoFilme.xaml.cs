@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace PacoteExtra.Views.ProgrtamacaoDeFilme
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class programacaoFilme : BasePages
+	public partial class ProgramacaoFilme : BasePages
 	{
-		public programacaoFilme ()
+		public ProgramacaoFilme ()
 		{
 			InitializeComponent ();
 		}

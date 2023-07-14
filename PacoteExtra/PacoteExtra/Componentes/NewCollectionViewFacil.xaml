@@ -162,7 +162,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="SubListaSessao">
-            <Frame VerticalOptions="FillAndExpand" BackgroundColor="Transparent" CornerRadius="2" BorderColor="{StaticResource CorBackGroundMaisClaro}">
+            <Frame VerticalOptions="FillAndExpand" BackgroundColor="#0f0f0f" CornerRadius="2" BorderColor="{StaticResource CorBackGroundMaisClaro}">
                 <Label Text="{Binding Descricao}" VerticalOptions="FillAndExpand" Style="{StaticResource LabelDefalDescricao}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ItemDeLIstatapped" 

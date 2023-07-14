@@ -62,8 +62,8 @@ namespace PacoteExtra.ViewModels
         [RelayCommand]
         async void CartazClick(object filme)
         {
-            SingletonParametros.GetInstance().AdicioneParametros(nameof(programacaoFilme), filme);
-            await App.Current.MainPage.Navigation.PushAsync(new programacaoFilme());
+            SingletonParametros.GetInstance().AdicioneParametros(nameof(ProgramacaoFilme), filme);
+            await App.Current.MainPage.Navigation.PushAsync(new ProgramacaoFilme());
         }
 
         public InicioMVVM()
