@@ -56,6 +56,12 @@
                 <Setter Property="TextColor" Value="{StaticResource CorTextosPrincipalInvertido}"></Setter>
             </Style>
 
+            <Style TargetType="Label" x:Key="LabelDetalheCuponsIngressos">
+                <Setter Property="FontSize" Value="20"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource CorTextosPrincipal}"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
+            </Style>
+
 
             <Style TargetType="Button">
 

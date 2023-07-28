@@ -8,6 +8,8 @@ namespace CinemaCore.Core.Interface
 {
     public interface ISessaoRepository
     {
+        Task<SessaoModel> ObtenhaSessaoPorCodigo(int sessao);
         Task<List<SessaoModel>> ObtenhaSessoes(int codigoFilme, int codigoFilial, DateTime dataInicioBusca, DateTime dataFimBusca);
+        Task<List<SessaoModel>> ObtenhaSessoesPorFilial(int codigoFilial, DateTime dataInicioBusca, DateTime dataFimBusca);
     }
 }

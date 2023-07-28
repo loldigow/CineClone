@@ -17,11 +17,20 @@ namespace PacoteExtra.Componentes
         public static BindableProperty DescricaoProperty = BindableProperty.Create(nameof(Descricao), typeof(string), typeof(DropDown), null);
         public static BindableProperty TituloProperty = BindableProperty.Create(nameof(Titulo), typeof(string), typeof(DropDown), null);
         public static BindableProperty CorDeFundoProperty = BindableProperty.Create(nameof(CorDeFundo), typeof(Color), typeof(DropDown), null);
+        public static BindableProperty PaddingTextoDropDownProperty = BindableProperty.Create(nameof(PaddingTextoDropDown), typeof(Thickness), typeof(DropDown), null);
+
+        public Thickness PaddingTextoDropDown
+        {
+            get { return (Thickness)GetValue(PaddingTextoDropDownProperty); }
+            set { SetValue(PaddingTextoDropDownProperty, value); }
+        }
+
         public Color CorDeFundo
         {
             get { return (Color)GetValue(CorDeFundoProperty); }
             set { SetValue(CorDeFundoProperty, value); }
         }
+
         public string Titulo
         {
             get { return (string)GetValue(TituloProperty); }
@@ -47,6 +56,10 @@ namespace PacoteExtra.Componentes
             if (propertyName == nameof(CorDeFundo))
             {
                 Frame.BackgroundColor = CorDeFundo;
+            }
+            if (propertyName == nameof(PaddingTextoDropDown))
+            {
+                DropDownStack.Padding = PaddingTextoDropDown;
             }
             if (propertyName == nameof(Descricao))
             {

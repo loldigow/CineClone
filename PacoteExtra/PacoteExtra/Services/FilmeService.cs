@@ -3,31 +3,35 @@ using CinemaCore.Core.Model;
 using CinemaCore.Core.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace CinemaCore.Core.Servico
+namespace PacoteExtra.Core.Services
 {
     public class FilmeService
     {
         private readonly IFilmeRepository _filmeRepository;
         private readonly IFavoritosRepository _favoritoRepository;
         private readonly IFilialRepository _filialRepository;
+        private readonly ISessaoRepository _sessaoRepository;
         public FilmeService() 
         {
             _filmeRepository = DependencyService.Get<IFilmeRepository>();
             _favoritoRepository = DependencyService.Get<IFavoritosRepository>();
             _filialRepository = DependencyService.Get<IFilialRepository>();
+            _sessaoRepository = DependencyService.Get<ISessaoRepository>();
         }
 
         public async Task<List<FilmeModel>> ObtenhaBilheteriaDeFilmesPorFilial(int codigoFilial)
         {
-            var filmesEmCartaznaFilial = await _filialRepository.ObtenhaFilmesEmCartazFilial(codigoFilial);
+            var sessoesAtivas = await _sessaoRepository.ObtenhaSessoesPorFilial(codigoFilial, DateTime.Now, DateTime.Now.AddDays(15));
+
             var listaFilmes = new List<FilmeModel>();
-            foreach(var i in filmesEmCartaznaFilial)
+            foreach(var filme in sessoesAtivas.Select(x => x.CodigoFilme).Distinct())
             {
-                listaFilmes.Add(await _filmeRepository.ObtenhaDetalhesFilme(i.CodigoFilme));
+                listaFilmes.Add(await _filmeRepository.ObtenhaDetalhesFilme(filme));
             }
             return listaFilmes;
         }

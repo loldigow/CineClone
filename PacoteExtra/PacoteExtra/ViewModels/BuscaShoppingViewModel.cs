@@ -1,11 +1,9 @@
-﻿using CinemaCore.Core.Servico;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PacoteExtra.Componentes;
-using System;
+using PacoteExtra.Core.Services;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 

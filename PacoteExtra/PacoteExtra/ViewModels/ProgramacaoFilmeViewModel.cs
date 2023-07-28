@@ -1,18 +1,15 @@
-﻿using AutoMapper;
-using CinemaCore.Core.Model;
-using CinemaCore.Core.Servico;
+﻿using CinemaCore.Core.Model;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PacoteExtra.Componentes;
+using PacoteExtra.Core.Services;
 using PacoteExtra.Core.Util;
 using PacoteExtra.Models;
 using PacoteExtra.Views.BuscaShopping;
+using PacoteExtra.Views.CompraTicket;
 using PacoteExtra.Views.ProgrtamacaoDeFilme;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace PacoteExtra.ViewModels
@@ -20,6 +17,11 @@ namespace PacoteExtra.ViewModels
     [ObservableObject]
     public partial class ProgramacaoFilmeViewModel : BaseViewModel
     {
+        public ProgramacaoFilmeViewModel()
+        {
+            DescricaoLeiaOculte = "Leia mais";
+
+        }
         private readonly ShoppingService _filialService = new ShoppingService();
         private readonly FilmeService _filmeService = new FilmeService();
         private readonly ProgramacaoService _programacaoService = new ProgramacaoService();
@@ -33,6 +35,10 @@ namespace PacoteExtra.ViewModels
         FilmeViewModel filmeModel;
         [ObservableProperty]
         List<ProgramacaoModel> programacao;
+        [ObservableProperty]
+        bool maisDetalhesVisible;
+        [ObservableProperty]
+        string descricaoLeiaOculte;
 
         [RelayCommand]
         void ClipClick()
@@ -60,9 +66,10 @@ namespace PacoteExtra.ViewModels
         }
 
         [RelayCommand]
-        void LeiaMaisComenad()
+        void LeiaMais()
         {
-
+            MaisDetalhesVisible = !MaisDetalhesVisible;
+            DescricaoLeiaOculte = MaisDetalhesVisible ? "Ocultar detalhes" : "Mais detalhes";
         }
 
         [RelayCommand]
@@ -80,7 +87,7 @@ namespace PacoteExtra.ViewModels
         [RelayCommand]
         void SessaoSelected(object horario)
         {
-
+            App.Current.MainPage.Navigation.PushAsync(new CompraTicketPage());
         }
 
         public override async void EventoAoAparecer()
@@ -89,12 +96,11 @@ namespace PacoteExtra.ViewModels
             await Carregando.CarregueEnquandoAcaoEstiverRodando(async () =>
             {
                 var parametro = (CollectionViewModel)SingletonParametros.GetInstance().GetParametros(nameof(ProgramacaoFilme));
-                _codigoFilme = parametro.Id;
+                _codigoFilme = parametro?.Id ?? _codigoFilme;
                 var filial = await _filialService.ObtenhaUltimaFiliaBuscada();
                 EhFavorito = await _filmeService.FilmeEhFavorito(_codigoFilme);
                 var filme = await _filmeService.ObtenhaDadosDoFilme(_codigoFilme);
                 var programacaoFilme = await _programacaoService.Obtenhaprogramacao(filme, filial, DateTime.Now, DateTime.Now.AddDays(15));
-
 
                 Device.BeginInvokeOnMainThread(() =>
                 {
@@ -103,6 +109,7 @@ namespace PacoteExtra.ViewModels
                     FilialSelecionada = filial;
                     Programacao = new List<ProgramacaoModel>() { programacaoFilme };
                 });
+
             }, "Carregando dados do Filme");
         }
     }

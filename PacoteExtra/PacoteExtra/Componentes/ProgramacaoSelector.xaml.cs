@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static System.Net.Mime.MediaTypeNames;
@@ -16,11 +16,19 @@ namespace PacoteExtra.Componentes
     public partial class ProgramacaoSelector : ContentView
     {
         private string _primeiroDia;
+
         public static readonly BindableProperty ProgramacoesProperty = BindableProperty.Create(nameof(Programacoes), typeof(List<ProgramacaoModel>), typeof(DateTimeLineSwippe), null);
         public List<ProgramacaoModel> Programacoes
         {
             get { return (List<ProgramacaoModel>)GetValue(ProgramacoesProperty); }
             set { SetValue(ProgramacoesProperty, value); }
+        }
+
+        public static readonly BindableProperty SessaoSelectedProperty = BindableProperty.Create(nameof(SessaoSelected), typeof(ICommand), typeof(DateTimeLineSwippe), null);
+        public ICommand SessaoSelected
+        {
+            get { return (ICommand)GetValue(SessaoSelectedProperty); }
+            set { SetValue(SessaoSelectedProperty, value);}
         }
 
 
@@ -30,7 +38,7 @@ namespace PacoteExtra.Componentes
             DiasView.DataInicio = DateTime.Now;
             DiasView.DataFim = DateTime.Now.AddDays(15);
             DiasView.AoSelecionarCommand = new Command((e) => { SelecaoDeDiaEvento(e); });
-            ListaProgramacao.AoPressionar = new Command((a) => { B(a); });
+         //   ListaProgramacao.AoPressionar = new Command((a) => { B(a); });
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -40,10 +48,6 @@ namespace PacoteExtra.Componentes
             {
                 ListaProgramacao.ItensOrigem = MonteUmaListasDoDia(DiasView.DataInicio.ToString("dd/MM"));
             }
-        }
-
-        private void C(object objeto)
-        {
         }
 
         private List<CollectionViewModel> MonteUmaListasDoDia(string DiaSelecionado)
@@ -75,28 +79,29 @@ namespace PacoteExtra.Componentes
                     {
                         programacaoCollectionViewModel.PropriedadeEmlista2.Add(new CollectionViewModel()
                         {
-                            Descricao = sessao.DataSessao.ToString("HH:mm")
-                        });
+                            Id = sessao.Codigo,
+                            Descricao = sessao.DataSessao.ToString("HH:mm"),
+                        }); 
                     }
                 }
 
                 if (programacaoCollectionViewModel.PropriedadeEmlista2.Any())
                 {
+                    programacaoCollectionViewModel.PropriedadeEmListaToque = new Command((e) => {
+                        Sessaotapped(e);
+                    });
                     filmesCollections.Add(programacaoCollectionViewModel);
-                    return filmesCollections;
                 }
             }
-            return null;
+            return filmesCollections.Any() ? filmesCollections : null;
         }
 
-        private void D(object x)
-        {
-            throw new NotImplementedException();
-        }
 
-        private Action<object> B(object e)
+        private void Sessaotapped(object e)
         {
-            return null;
+            if(SessaoSelected?.CanExecute(e) ?? false) { 
+                SessaoSelected.Execute(e);
+            }
         }
 
         private void SelecaoDeDiaEvento(object e)

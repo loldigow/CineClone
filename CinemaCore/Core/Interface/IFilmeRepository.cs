@@ -9,5 +9,7 @@ namespace CinemaCore.Core.Interface
     public interface IFilmeRepository
     {
         Task<FilmeModel> ObtenhaDetalhesFilme(int codigo);
+        Task<string> ObtenhaNomeFilme(int filme);
+        Task<List<FilmeModel>> ObtenhaTodosFilmesAtivos();
     }
 }

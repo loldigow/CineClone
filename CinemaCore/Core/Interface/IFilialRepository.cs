@@ -12,5 +12,6 @@ namespace CinemaCore.Core.Interface
         Task<List<FilialCinemaModel>> ObtenhaPorDescricao(string descricao);
         void SelecioneFilial(int filial);
         Task<List<CartazFilial>> ObtenhaFilmesEmCartazFilial(int codigoFilial);
+        Task<FilialCinemaModel> ObtenhaFilialPorCodigo(int codigoFilial);
     }
 }

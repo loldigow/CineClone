@@ -8,4 +8,8 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Core\Servico\" />
+  </ItemGroup>
+
 </Project>

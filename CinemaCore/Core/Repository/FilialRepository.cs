@@ -9,6 +9,11 @@ namespace CinemaCore.Core.Repository
 {
     public class FilialRepository : IFilialRepository
     {
+        public Task<FilialCinemaModel> ObtenhaFilialPorCodigo(int codigoFilial)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<FilialCinemaModel> ObtenhaPorDescricao(string descricao)
         {
             throw new NotImplementedException();

@@ -7,7 +7,7 @@
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="ClickDoDropDown" ></TapGestureRecognizer>
             </Frame.GestureRecognizers>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" x:Name="DropDownStack" HorizontalOptions="FillAndExpand">
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label x:Name="LabelTitulo" Style="{StaticResource LabelDefalTitulo}"></Label>
                     <Label x:Name="LabelDescricao" Style="{StaticResource LabelDefalDescricao}"></Label>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePages  xmlns:views="clr-namespace:PacoteExtra.Views"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:componentes="clr-namespace:PacoteExtra.Componentes" xmlns:viewmodels="clr-namespace:PacoteExtra.ViewModels"
+                  NavigationPage.HasNavigationBar="False"
+             x:Class="PacoteExtra.Views.MeusIngressos.MeusIngressosPage">
+    <views:BasePages.BindingContext>
+        <viewmodels:MeusIngressosViewModel></viewmodels:MeusIngressosViewModel>
+    </views:BasePages.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid VerticalOptions="Start" HeightRequest="250">
+                <Label Text="Minhas compras"
+                       Margin="50"
+                   Style="{StaticResource LabelTituloProgramacao}"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+                <componentes:LabelAwesome Margin="20"  Text="&#xf053;" 
+                                   Style="{StaticResource LabelDefalTitulo}" >
+                    <componentes:LabelAwesome.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding VoltarCommand}"></TapGestureRecognizer>
+                    </componentes:LabelAwesome.GestureRecognizers>
+                </componentes:LabelAwesome>
+            </Grid>
+            <StackLayout VerticalOptions="Center">
+                <componentes:NewCollectionViewFacil LabelSemElementos="Você ainda não comprou ingressos" ItensOrigem="{Binding Compras}" >
+                    
+                </componentes:NewCollectionViewFacil>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</views:BasePages>

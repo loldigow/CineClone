@@ -192,5 +192,11 @@ namespace Mock.Repository
             await Task.Delay(250);
             return _cartazFilial.Where(x => x.CodigoFilial == codigoFilial).ToList();
         }
+
+        public async Task<FilialCinemaModel> ObtenhaFilialPorCodigo(int codigoFilial)
+        {
+            await Task.Delay(2);
+            return _filialCinemas.FirstOrDefault(x => x.Codigo.Equals(codigoFilial)); 
+        }
     }
 }

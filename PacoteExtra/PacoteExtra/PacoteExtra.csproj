@@ -45,6 +45,9 @@
     <EmbeddedResource Update="Componentes\Carregando.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Componentes\ChaveValor.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Componentes\DateTimeLineSwippe.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -111,12 +114,21 @@
     <EmbeddedResource Update="Views\BuscaShopping\BuscaShoppingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\CompraTicket\CompraTicketPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Cupons\Cupons.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Inicio\InicioPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MeusIngressos\MeusIngressosPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProgramacaoCompleta\ProgramacaoCompleta.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProgrtamacaoDeFilme\ProgramacaoFilme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -127,8 +139,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Core\AppServices\" />
     <Folder Include="Properties\" />
-    <Folder Include="Views\ProgramacaoCompleta\" />
   </ItemGroup>
 
   <ItemGroup>

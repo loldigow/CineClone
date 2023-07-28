@@ -45,10 +45,28 @@
                         </StackLayout>
                     </StackLayout>
                     <componentes:JustifyLabel JustifyText="True" Text="{Binding FilmeModel.Sinopse}" FontSize="Body"  TextColor="{StaticResource Branco}" Margin="0,25"></componentes:JustifyLabel>
-                    <Label Margin="0,10" TextColor="{StaticResource CorBackGroundMaisClaro}" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Start" TextDecorations="Underline" Text="Leia mais"></Label>
+                    <StackLayout IsVisible="{Binding MaisDetalhesVisible}">
+                        <componentes:ChaveValor Chave="Nome original" Valor="Filme Original star Wars" Margin="0,15"></componentes:ChaveValor>
+                        <StackLayout Orientation="Horizontal" >
+                            <componentes:ChaveValor Chave="Idioma Original" Valor="Ingles" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></componentes:ChaveValor>
+                            <componentes:ChaveValor Chave="Diretor" Valor="Um diretor qualquer" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></componentes:ChaveValor>
+                        </StackLayout>
+                        <componentes:ChaveValor Chave="Elenco" Valor="Tom Cruise" Margin="0,15"></componentes:ChaveValor>
+                    </StackLayout>
+                    <Label Margin="0,10" 
+                           TextColor="{StaticResource CorBackGroundMaisClaro}"
+                           FontSize="Large" 
+                           FontAttributes="Bold" 
+                           HorizontalTextAlignment="Start"
+                           TextDecorations="Underline" 
+                           Text="{Binding DescricaoLeiaOculte}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LeiaMaisCommand}"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
-                <componentes:DropDown Titulo="Cinema"  CorDeFundo="#2f3d51" Descricao="{Binding FilialSelecionada.Descricao}"  ClickComand="{Binding TrocarFilialCommand}" Margin="0,25"></componentes:DropDown>
-                <componentes:ProgramacaoSelector Programacoes="{Binding Programacao}"></componentes:ProgramacaoSelector>
+                <componentes:DropDown Titulo="Cinema" PaddingTextoDropDown="10,0,10,0" CorDeFundo="#2f3d51" Descricao="{Binding FilialSelecionada.Descricao}"  ClickComand="{Binding TrocarFilialCommand}" Margin="0,25"></componentes:DropDown>
+                <componentes:ProgramacaoSelector Programacoes="{Binding Programacao}" SessaoSelected="{Binding SessaoSelectedCommand}"></componentes:ProgramacaoSelector>
             </StackLayout>
 
         </ScrollView>
