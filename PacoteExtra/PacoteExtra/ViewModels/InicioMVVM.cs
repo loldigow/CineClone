@@ -111,7 +111,7 @@ namespace PacoteExtra.ViewModels
 
                 var favoritos = from favorito in listaDefavoritos
                                 join filme in listaFilmes
-                            on favorito.Codigo equals filme.Codigo
+                            on favorito.CodigoFilme equals filme.Codigo
                                 select filme;
 
                 Device.BeginInvokeOnMainThread(() =>
