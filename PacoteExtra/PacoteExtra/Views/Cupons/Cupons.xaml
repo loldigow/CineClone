@@ -1,18 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:componentes="clr-namespace:PacoteExtra.Componentes"
+             Padding="-15"
              x:Class="PacoteExtra.Views.Cupons.Cupons">
     <ContentView.Content>
         <StackLayout>
-            <xct:TabView VerticalOptions="Start">
-                <xct:TabViewItem Text="Ingressos" TextColor="{StaticResource CorTextosPrincipal}" TextColorSelected="Yellow" BadgeBackgroundColorSelected="White" >
-                    <Label Text="Pagina de ingressos" TextColor="Green"></Label>
-                </xct:TabViewItem>
-                <xct:TabViewItem Text="Cupons" TextColor="{StaticResource CorTextosPrincipal}"  TextColorSelected="Yellow">
-                    <Label Text="Pagina de Cupons" Style="{StaticResource LabelDefalTitulo}"></Label>
-                </xct:TabViewItem>
-            </xct:TabView>
+            <Grid VerticalOptions="Start" Padding="15,30,15,15" BackgroundColor="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.Column="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="ingressos"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="Ingressos" FontSize="25" HorizontalTextAlignment="Center" TextColor="White"  FontAttributes="Bold"></Label>
+                    <BoxView BackgroundColor="#febc15" x:Name="BoxEsquerda"
+                                 Margin="25,0,25,0"
+                                 HorizontalOptions="FillAndExpand"
+                                 HeightRequest="1"></BoxView>
+
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand"  Grid.Column="1">
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="cupons"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Label Text="Cupons" FontSize="25" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center"></Label>
+                        <BoxView BackgroundColor="#00aef0"
+                         HorizontalOptions="FillAndExpand"
+                             x:Name="BoxDireita"
+                          Margin="25,0,25,0"
+                                 HeightRequest="1">
+                        </BoxView>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <StackLayout>
+                <StackLayout x:Name="GuiaIngressos" Padding="0,20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Label Style="{x:StaticResource LabelDetalheCuponsIngressos}" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Apresente essa tela para entrar" TextColor="White"></Label>
+                        <Label Style="{x:StaticResource LabelDetalheCuponsIngressos}" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="na sala do cinema" TextColor="White"></Label>
+                    </StackLayout>
+                    <StackLayout Padding="0,20,0,0">
+                        <componentes:NewCollectionViewFacil LabelSemElementos="Nenhum ingresso disponivel" 
+                                                            ItensOrigem="{Binding Ingressos}"
+                                                            Margin="15"
+                                                            Template="IngressosTemplate">
+
+                        </componentes:NewCollectionViewFacil>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="End" Margin="25">
+                        <componentes:BotaoFacil Texto="Minhas Comporas" 
+                                                AoPressionar="{Binding MinhasComprasClickCommand}" 
+                                                CorBorda="{StaticResource Branco}" 
+                                                Padding="10" ></componentes:BotaoFacil> 
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout x:Name="GuiaCupons" Padding="0,20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Label Style="{x:StaticResource LabelDetalheCuponsIngressos}" FontAttributes="Bold" Text="Ultilize os códigos abaixo na hora" HorizontalTextAlignment="Center" TextColor="White"></Label>
+                        <Label Style="{x:StaticResource LabelDetalheCuponsIngressos}" FontAttributes="Bold" Text="da compra para economizar no" HorizontalTextAlignment="Center" TextColor="White"></Label>
+                        <Label Style="{x:StaticResource LabelDetalheCuponsIngressos}" FontAttributes="Bold" Text="Cinelfix Aparecida de Goiania" HorizontalTextAlignment="Center" TextColor="White"></Label>
+                    </StackLayout>
+                    <StackLayout Padding="0,20,0,0">
+                        <componentes:NewCollectionViewFacil LabelSemElementos="Nenhum desconto encontrado" ItensOrigem="{Binding IngressosList}">
+
+                        </componentes:NewCollectionViewFacil>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

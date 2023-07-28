@@ -1,22 +1,10 @@
 ﻿using CinemaCore.Core.Interface;
-using CinemaCore.Core.Repository;
 using Mock.Repository;
-using PacoteExtra.Componentes.ExemplosDeUso;
-using PacoteExtra.Componentes.ExemplosDeUso.Botao;
-using PacoteExtra.Componentes.ExemplosDeUso.CronogramaProgramacaoselector;
-using PacoteExtra.Componentes.ExemplosDeUso.DateTimeLineSwipe;
-using PacoteExtra.Componentes.ExemplosDeUso.DropDown;
-using PacoteExtra.Componentes.ExemplosDeUso.ExemploCollectionView;
-using PacoteExtra.Componentes.ExemplosDeUso.Loading;
-using PacoteExtra.Componentes.ExemplosDeUso.SearchCustom;
-using PacoteExtra.Componentes.ExemplosDeUso.TabView;
-using PacoteExtra.Componentes.ExemplosDeUso.TappedCustom;
-using PacoteExtra.Services;
-using PacoteExtra.Views;
-using PacoteExtra.Views.BuscaShopping;
+using PacoteExtra.MeuMapper;
 using PacoteExtra.Views.Inicio;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using PacoteExtra.Core;
 
 namespace PacoteExtra
 {
@@ -28,21 +16,22 @@ namespace PacoteExtra
         public App()
         {
             InitializeComponent();
-            DependencyService.RegisterSingleton<IFilialRepository>(new FilialRepositoryMock());
-            DependencyService.RegisterSingleton<IFilmeRepository>(new FilmeRepositoryMock());
+            this.RegistreDependencias();
+            Mapper.CrieMapeamento();
+
             MainPage = new NavigationPage( new InicioPage());
         }
 
-        protected override void OnStart()
-        {
-        }
+        //protected override void OnStart()
+        //{
+        //}
 
-        protected override void OnSleep()
-        {
-        }
+        //protected override void OnSleep()
+        //{
+        //}
 
-        protected override void OnResume()
-        {
-        }
+        //protected override void OnResume()
+        //{
+        //}
     }
 }

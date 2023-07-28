@@ -131,7 +131,6 @@
                                                             OrientacaoTemplate="Horizontal"
                                                             Template="TemplateRecursosFilme"
                                                             Nome="SubLista"
-                                                            AoPressionar="{Binding PropriedadeEmListaAoPressionarCommand}"
                                                             >
                         </componentes:NewCollectionViewFacil>
                         <componentes:NewCollectionViewFacil Grid.Row="3"
@@ -162,7 +161,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="SubListaSessao">
-            <Frame VerticalOptions="FillAndExpand" BackgroundColor="Transparent" CornerRadius="2" BorderColor="{StaticResource CorBackGroundMaisClaro}">
+            <Frame VerticalOptions="FillAndExpand" BackgroundColor="#0f0f0f" CornerRadius="2" BorderColor="{StaticResource CorBackGroundMaisClaro}">
                 <Label Text="{Binding Descricao}" VerticalOptions="FillAndExpand" Style="{StaticResource LabelDefalDescricao}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ItemDeLIstatapped" 
@@ -201,6 +200,23 @@
                         <Label Text="{Binding Descricao4}" Style="{StaticResource LabelDefalDescricao}" HorizontalOptions="FillAndExpand" FontAttributes="Bold"></Label>
                     </StackLayout>
                 </StackLayout>
+            </StackLayout>
+        </DataTemplate>
+
+        <DataTemplate x:Key="IngressosTemplate">
+                <StackLayout>
+                <BoxView BackgroundColor="White" HeightRequest="1"></BoxView>
+                    <componentes:JustifyLabel Text="{Binding Titulo}"  TextColor="{StaticResource Branco}" FontAttributes="Bold" FontSize="Title" HorizontalOptions="FillAndExpand"></componentes:JustifyLabel>
+                    <StackLayout Orientation="Horizontal">
+                        <componentes:ChaveValor Chave="Sala::" Valor="{Binding Descricao}" OrientacaoTupla="Horizontal" HorizontalOptions="FillAndExpand"></componentes:ChaveValor>
+                        <componentes:ChaveValor Chave="Horário" Valor="{Binding Descricao1}"  OrientacaoTupla="Horizontal" HorizontalOptions="FillAndExpand"></componentes:ChaveValor>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <componentes:ChaveValor Chave="Poltronas" Valor="{Binding Descricao2}"  OrientacaoTupla="Horizontal" HorizontalOptions="FillAndExpand"></componentes:ChaveValor>
+                        <componentes:ChaveValor Chave="Data" Valor="{Binding Descricao3}"  OrientacaoTupla="Horizontal" HorizontalOptions="FillAndExpand"></componentes:ChaveValor>
+                    </StackLayout >
+                    <componentes:ChaveValor Chave="Local:" Valor="{Binding Descricao4}"  OrientacaoTupla="Horizontal"></componentes:ChaveValor>
+                <BoxView BackgroundColor="White" HeightRequest="1"></BoxView>
             </StackLayout>
         </DataTemplate>
     </CollectionView.Resources>

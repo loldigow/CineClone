@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:componentes="clr-namespace:PacoteExtra.Componentes"
+             x:Class="PacoteExtra.Views.ProgramacaoCompleta.ProgramacaoCompleta">
+    <ContentView.Content>
+        <ScrollView VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+            <StackLayout Spacing="0">
+                <Image Source="cineflix.png" WidthRequest="200"></Image>
+                <Label Text="Programação" FontSize="30" FontAttributes="Bold" TextColor="{StaticResource Branco}" HorizontalOptions="Center"/>
+                <componentes:DropDown PaddingTextoDropDown="15,0,15,0" Titulo="Cinema" ClickComand="{Binding PesquisaShoppingCommand}" CorDeFundo="#2f3d51" Descricao="{Binding FilialSelecionada.Descricao}"  Margin="0,25"></componentes:DropDown>
+                <componentes:ProgramacaoSelector Programacoes="{Binding Programacao}"
+                                                 
+                                                 SessaoSelected="{Binding SessaoSelectedCommand}"></componentes:ProgramacaoSelector>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

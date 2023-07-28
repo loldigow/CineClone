@@ -1,14 +1,16 @@
 ﻿using CinemaCore.Core.Model;
-using CinemaCore.Core.Servico;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PacoteExtra.Componentes;
+using PacoteExtra.Core.Services;
+using PacoteExtra.Core.Util;
 using PacoteExtra.Views.BuscaShopping;
+using PacoteExtra.Views.MeusIngressos;
+using PacoteExtra.Views.ProgrtamacaoDeFilme;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace PacoteExtra.ViewModels
@@ -19,6 +21,10 @@ namespace PacoteExtra.ViewModels
         #region Servicos
         private readonly FilmeService _filmeService = new FilmeService();
         private readonly ShoppingService _filialService = new ShoppingService();
+        private readonly ProgramacaoService _sessaoService = new ProgramacaoService();
+        private readonly IngressosService _historicoIngressos = new IngressosService();
+        private readonly CuponsDescontoService _descontoService = new CuponsDescontoService();
+
         #endregion
 
         [ObservableProperty]
@@ -35,9 +41,18 @@ namespace PacoteExtra.ViewModels
         FilialCinemaModel filialSelecionada;
 
         [ObservableProperty]
+        List<CollectionViewModel> compras;
+        [ObservableProperty]
         List<CollectionViewModel> filmeList;
         [ObservableProperty]
         List<CollectionViewModel> favoritosList;
+        [ObservableProperty]
+        List<CollectionViewModel> ingressos;
+        [ObservableProperty]
+        List<CollectionViewModel> cuponsList;
+
+        [ObservableProperty]
+        List<ProgramacaoModel> programacao;
 
         [RelayCommand]
         public void CuponsClick()
@@ -58,43 +73,47 @@ namespace PacoteExtra.ViewModels
         }
 
         [RelayCommand]
-        async void CartazClick(object filme)
+        public async void MinhasComprasClick()
         {
-            if (filme is CollectionViewModel cartazSelecionado)
-            {
-
-
-                PageSelected = 2;
-
-            }
-
+            await App.Current.MainPage.Navigation.PushAsync(new MeusIngressosPage());
         }
 
-
+        [RelayCommand]
+        async void CartazClick(object filme)
+        {
+            SingletonParametros.GetInstance().AdicioneParametros(nameof(ProgramacaoFilme), filme);
+            await App.Current.MainPage.Navigation.PushAsync(new ProgramacaoFilme());
+        }
 
         public InicioMVVM()
         {
             page1Visible = true;
             PageSelected = 1;
-            Task.Run(async () =>
-            {
-
-
-            });
         }
 
         private void CarregueFilialFavorita()
         {
-            throw new NotImplementedException();
+
         }
 
         public async override void EventoAoAparecer()
         {
-            await Task.Run(() =>
+
+            await Carregando.CarregueEnquandoAcaoEstiverRodando(async () =>
             {
-                var filial = _filialService.ObtenhaUltimaFiliaBuscada();
-                var listaFilmes = _filmeService.ObtenhaBilheteriaDeFilmes();
-                var listaDefavoritos = _filmeService.ObtenhaBilheteriesAdicionadasAoFavorito();
+
+                var filial = await _filialService.ObtenhaUltimaFiliaBuscada();
+                var listaFilmes = await _filmeService.ObtenhaBilheteriaDeFilmesPorFilial(filial.Codigo);
+                var listaDefavoritos = await _filmeService.ObtenhaBilheteriesAdicionadasAoFavoritoAsync();
+                var programacaoDestaFilial = await _sessaoService.ObtenhaSessoesDaFilial(filial.Codigo, DateTime.Now, DateTime.Now.AddDays(15));
+                var ultimasCompras = await _historicoIngressos.ObtenhaUltimosIngressosDaFilial(filial.Codigo);
+                var cupons = await _descontoService.ObtenhaDescontosDaFilial(filial.Codigo);
+
+                var favoritos = from favorito in listaDefavoritos
+                                join filme in listaFilmes
+                            on favorito.Codigo equals filme.Codigo
+                                select filme;
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     FilmeList = listaFilmes.Select(x => new CollectionViewModel()
@@ -102,24 +121,27 @@ namespace PacoteExtra.ViewModels
                         Id = x.Codigo,
                         Descricao = x.UrlImagem
                     }).ToList();
-                    FavoritosList = listaDefavoritos.Select(x => new CollectionViewModel()
+                    FavoritosList = favoritos.Select(x => new CollectionViewModel()
                     {
                         Id = x.Codigo,
                         Descricao = x.UrlImagem
                     }).ToList();
-                });
-
-
-                Device.BeginInvokeOnMainThread(() =>
-                {
                     FilialSelecionada = filial;
+                    Programacao = programacaoDestaFilial;
+                    Ingressos = ultimasCompras.Select(x => new CollectionViewModel() 
+                    { 
+                        Id = x.Codigo, 
+                        Titulo = x.Filme.NomeFilme, 
+                        Descricao = x.Sessao.DescricaoSessao, 
+                        Descricao1 = x.Sessao.DataSessao.ToString("HH:mm"),
+                        Descricao2 = string.Join(", ", x.Poltronas.Select(x => x.Descricao)), 
+                        Descricao3 = x.Sessao.DataSessao.ToString("dd/MM/YYYY"), 
+                        Descricao4 = x.FilialCinema.Descricao 
+                    }).ToList();
+
+                    CuponsList = cupons.Select(x => new CollectionViewModel() { }).ToList();
                 });
-            });
-        }
-
-        private void CrieDadosfake()
-        {
-
+            }, "Carregando dados");
         }
 
         [RelayCommand]

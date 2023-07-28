@@ -7,8 +7,7 @@
                   NavigationPage.HasNavigationBar="False"
                   x:Name="inicioPage"
                   xmlns:cupons="clr-namespace:PacoteExtra.Views.Cupons" 
-                  xmlns:programacao="clr-namespace:PacoteExtra.Views.ProgramacaoCompleta" 
-                  xmlns:visualizacaogeral="clr-namespace:PacoteExtra.Views.VisualizacaoGeral"
+                  xmlns:visualizacaogeral="clr-namespace:PacoteExtra.Views.VisualizacaoGeral" xmlns:programacaocompleta="clr-namespace:PacoteExtra.Views.ProgramacaoCompleta"
                   x:Class="PacoteExtra.Views.Inicio.InicioPage">
     <views:BasePages.BindingContext>
         <viewmodels:InicioMVVM></viewmodels:InicioMVVM>
@@ -22,7 +21,10 @@
                     HorizontalOptions="FillAndExpand"/>
                 </StackLayout>
                 <StackLayout IsVisible="{Binding Page2Visible}" 
+                         Padding="-15"
                          VerticalOptions="FillAndExpand">
+                    <programacaocompleta:ProgramacaoCompleta
+                        ></programacaocompleta:ProgramacaoCompleta>
                 </StackLayout>
                 <StackLayout VerticalOptions="FillAndExpand"
                          IsVisible="{Binding Page2Visible}">

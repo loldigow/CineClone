@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
 	  <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
@@ -16,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Componentes\ExemplosDeUso\Favorito\FavoritoExemplo.xaml.cs">
+      <DependentUpon>FavoritoExemplo.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Componentes\ExemplosDeUso\TabView\MinhasComprasTemplateExemplo.xaml.cs">
       <DependentUpon>MinhasComprasTemplateExemplo.xaml</DependentUpon>
     </Compile>
@@ -29,6 +33,9 @@
       <SubType>Code</SubType>
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Views\ProgrtamacaoDeFilme\programacaoFilme.xaml.cs">
+      <DependentUpon>ProgramacaoFilme.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +43,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\Carregando.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Componentes\ChaveValor.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\DateTimeLineSwippe.xaml">
@@ -48,6 +58,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\ExemplosDeUso\DateTimeLineSwipe\DateTimeLineSwipePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Componentes\ExemplosDeUso\Favorito\FavoritoExemplo.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\ExemplosDeUso\Loading\LoadingPage.xaml">
@@ -63,6 +76,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\ExemplosDeUso\TappedCustom\TabbetCustomPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Componentes\Favorito.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\NewCollectionViewFacil.xaml">
@@ -98,6 +114,9 @@
     <EmbeddedResource Update="Views\BuscaShopping\BuscaShoppingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\CompraTicket\CompraTicketPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Cupons\Cupons.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -105,14 +124,23 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\MeusIngressos\MeusIngressosPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProgramacaoCompleta\ProgramacaoCompleta.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProgrtamacaoDeFilme\ProgramacaoFilme.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\VisualizacaoGeral\ProgramacaoGeral.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Core\AppServices\" />
     <Folder Include="Properties\" />
-    <Folder Include="Views\ProgramacaoCompleta\" />
   </ItemGroup>
 
   <ItemGroup>

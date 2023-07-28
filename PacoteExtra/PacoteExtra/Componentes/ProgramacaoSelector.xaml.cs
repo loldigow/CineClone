@@ -1,89 +1,116 @@
-﻿using System;
+﻿using CinemaCore.Core.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PacoteExtra.Componentes
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProgramacaoSelector : ContentView
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProgramacaoSelector : ContentView
+    {
+        private string _primeiroDia;
+
+        public static readonly BindableProperty ProgramacoesProperty = BindableProperty.Create(nameof(Programacoes), typeof(List<ProgramacaoModel>), typeof(DateTimeLineSwippe), null);
+        public List<ProgramacaoModel> Programacoes
+        {
+            get { return (List<ProgramacaoModel>)GetValue(ProgramacoesProperty); }
+            set { SetValue(ProgramacoesProperty, value); }
+        }
+
+        public static readonly BindableProperty SessaoSelectedProperty = BindableProperty.Create(nameof(SessaoSelected), typeof(ICommand), typeof(DateTimeLineSwippe), null);
+        public ICommand SessaoSelected
+        {
+            get { return (ICommand)GetValue(SessaoSelectedProperty); }
+            set { SetValue(SessaoSelectedProperty, value);}
+        }
+
+
         public ProgramacaoSelector()
         {
             InitializeComponent();
             DiasView.DataInicio = DateTime.Now;
             DiasView.DataFim = DateTime.Now.AddDays(15);
-            DiasView.AoSelecionarCommand = new Command(() => { SelecaoDeDiaEvento(); });
-            ListaProgramacao.AoPressionar = new Command((a) => { B(a); });
-            ListaProgramacao.ItensOrigem = MonteUmaLista(1);
-		}
-
-        private void C(object objeto)
-        {
+            DiasView.AoSelecionarCommand = new Command((e) => { SelecaoDeDiaEvento(e); });
+         //   ListaProgramacao.AoPressionar = new Command((a) => { B(a); });
         }
 
-        private List<CollectionViewModel> MonteUmaLista(int opcao)
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            var shoppings = new List<CollectionViewModel>();
-            if(opcao == 1){
-                shoppings.Add(new CollectionViewModel
-                {
-                    Titulo = "Cineflix aparecida de goiânia",
-                    Descricao = "https://i0.wp.com/animagos.com.br/wp-content/uploads/2019/01/DVD-COG-v1.png?resize=759%2C1080",
-                    Descricao1 = "A, B e C",
-                    Descricao2 = "Aparecida de goiania - Go",
-                    PropriedadeEmlista = new List<CollectionViewModel>() { new CollectionViewModel() { Descricao = "18", CorElemento = "#362120" }, new CollectionViewModel() { Descricao = "3D", CorElemento = "#1b291c" } },
-                    PropriedadeEmListaToque = new Command((x) => { C(x); }),
-                    PropriedadeEmlista2 = new List<CollectionViewModel>() { new CollectionViewModel() { Descricao = "07:00" }, new CollectionViewModel() { Descricao = "12:00" }, new CollectionViewModel() { Descricao = "17:00" } },
-                    PropriedadeEmListaToque2 = new Command((x) => { D(x); })
-                });
-                shoppings.Add(new CollectionViewModel
-                {
-                    Titulo = "Cineflix Shopping Sul - Valparaiso",
-                    Descricao = "2,94 KM",
-                    Descricao1 = "Rod BR 040",
-                    Descricao2 = "Valparaíso de Goias - Go",
-                    PropriedadeEmlista = new List<CollectionViewModel>() { new CollectionViewModel() { Descricao = "18", CorElemento = "#362120" }, new CollectionViewModel() { Descricao = "3D", CorElemento = "#1b291c" }  },
-                    PropriedadeEmListaToque = new Command((x) => { C(x); }),
-                    PropriedadeEmlista2 = new List<CollectionViewModel>() { new CollectionViewModel() { Descricao = "07:00" }, new CollectionViewModel(){ Descricao = "12:00" } },
-                    PropriedadeEmListaToque2 = new Command((x) => { D(x); })
-                }); ;
-                return shoppings;
-            }
-            else
+            base.OnPropertyChanged(propertyName);
+            if (propertyName == nameof(Programacoes))
             {
-                shoppings.Add(new CollectionViewModel
-                {
-                    Titulo = "Cineflix Shopping Sul - Valparaiso",
-                    Descricao = "2,94 KM",
-                    Descricao1 = "Rod BR 040",
-                    Descricao2 = "Valparaíso de Goias - Go",
-                    PropriedadeEmlista = new List<CollectionViewModel>() { new CollectionViewModel() { Descricao = "18", CorElemento = "#362120" }, new CollectionViewModel() { Descricao = "3D",CorElemento = "#1b291c" } },
-                    PropriedadeEmListaToque = new Command((x) => { C(x); }),
-                    PropriedadeEmlista2 = new List<CollectionViewModel>() { new CollectionViewModel() { Descricao = "29:45"} },
-                    PropriedadeEmListaToque2 = new Command((x) => { D(x); })
-                });
-                return shoppings;
+                ListaProgramacao.ItensOrigem = MonteUmaListasDoDia(DiasView.DataInicio.ToString("dd/MM"));
             }
         }
 
-        private void D(object x)
+        private List<CollectionViewModel> MonteUmaListasDoDia(string DiaSelecionado)
         {
-            throw new NotImplementedException();
+            var filmesCollections = new List<CollectionViewModel>();
+            foreach (var programacao in Programacoes)
+            {
+                var programacaoCollectionViewModel = new CollectionViewModel();
+                var filme = programacao.Filme;
+                programacaoCollectionViewModel.Titulo = filme.NomeFilme;
+                programacaoCollectionViewModel.Descricao = filme.UrlImagem;
+                programacaoCollectionViewModel.PropriedadeEmlista = new List<CollectionViewModel>()
+                {
+                    new CollectionViewModel()
+                    {
+                        Descricao = filme.Classificacao.Abreviacao,
+                        CorElemento = filme.Classificacao.CorClassificacao
+                    },
+                     new CollectionViewModel()
+                    {
+                        Descricao = "Dublado",
+                        CorElemento = Color.Transparent
+                    }
+                };
+                programacaoCollectionViewModel.PropriedadeEmlista2 = new List<CollectionViewModel>();
+                foreach (var sessao in programacao.Sessao)
+                {
+                    if (sessao.DataSessao.ToString("dd/MM") == DiaSelecionado)
+                    {
+                        programacaoCollectionViewModel.PropriedadeEmlista2.Add(new CollectionViewModel()
+                        {
+                            Id = sessao.Codigo,
+                            Descricao = sessao.DataSessao.ToString("HH:mm"),
+                        }); 
+                    }
+                }
+
+                if (programacaoCollectionViewModel.PropriedadeEmlista2.Any())
+                {
+                    programacaoCollectionViewModel.PropriedadeEmListaToque = new Command((e) => {
+                        Sessaotapped(e);
+                    });
+                    filmesCollections.Add(programacaoCollectionViewModel);
+                }
+            }
+            return filmesCollections.Any() ? filmesCollections : null;
         }
 
-        private Action<object> B(object e)
+
+        private void Sessaotapped(object e)
         {
-            return null;
+            if(SessaoSelected?.CanExecute(e) ?? false) { 
+                SessaoSelected.Execute(e);
+            }
         }
 
-        private void SelecaoDeDiaEvento()
+        private void SelecaoDeDiaEvento(object e)
         {
-            ListaProgramacao.ItensOrigem = MonteUmaLista(2);
+            if (e is CollectionViewModel teste)
+            {
+                ListaProgramacao.ItensOrigem = MonteUmaListasDoDia(teste.Descricao);
+            }
+
         }
     }
 }

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePages  xmlns:views="clr-namespace:PacoteExtra.Views"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:componentes="clr-namespace:PacoteExtra.Componentes" 
+             xmlns:viewmodels="clr-namespace:PacoteExtra.ViewModels"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="PacoteExtra.Views.ProgrtamacaoDeFilme.ProgramacaoFilme">
+    <ContentPage.BindingContext>
+        <viewmodels:ProgramacaoFilmeViewModel></viewmodels:ProgramacaoFilmeViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout>
+                <Grid>
+                    <Image Margin="0,80,0,0" Source="{Binding FilmeModel.UrlImagem}" Aspect="AspectFill" HeightRequest="500"></Image>
+
+                    <componentes:LabelAwesome Margin="20"  Text="&#xf053;" 
+                                   Style="{StaticResource LabelDefalTitulo}" >
+                        <componentes:LabelAwesome.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding VoltarCommand}"></TapGestureRecognizer>
+                        </componentes:LabelAwesome.GestureRecognizers>
+                    </componentes:LabelAwesome>
+                    <componentes:Favorito  VerticalOptions="Start" 
+                                           Margin="20" 
+                                           Tamanho="30" 
+                                           Largura="30" 
+                                           HorizontalOptions="End"
+                                           EhFavorito="{Binding EhFavorito, Mode=TwoWay}"
+                                           AoSelecionarFavorito="{Binding AdicioneAosfavoriosCommand}"></componentes:Favorito>
+
+
+                </Grid>
+                <StackLayout Padding="25,15">
+                    <StackLayout Orientation="Horizontal" Margin="0">
+                        <StackLayout Spacing="0" HorizontalOptions="StartAndExpand">
+                            <Label Text="Sinopse" Style="{StaticResource LabelDefalDescricao}" FontAttributes="Bold" HorizontalOptions="StartAndExpand"></Label>
+                            <Label Text="{Binding FilmeModel.DescricaoTipoETempo}" TextColor="{StaticResource CorBackGroundMaisClaro}"></Label>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="End">
+                            <Frame BackgroundColor="{Binding FilmeModel.Classificacao.CorClassificacao}" CornerRadius="15" Padding="15,5">
+                                <Label Text="{Binding FilmeModel.Classificacao.Abreviacao}"  TextColor="{StaticResource Branco}" FontSize="20"  FontAttributes="Bold"></Label>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                    <componentes:JustifyLabel JustifyText="True" Text="{Binding FilmeModel.Sinopse}" FontSize="Body"  TextColor="{StaticResource Branco}" Margin="0,25"></componentes:JustifyLabel>
+                    <StackLayout IsVisible="{Binding MaisDetalhesVisible}">
+                        <componentes:ChaveValor Chave="Nome original" Valor="Filme Original star Wars" Margin="0,15"></componentes:ChaveValor>
+                        <StackLayout Orientation="Horizontal" >
+                            <componentes:ChaveValor Chave="Idioma Original" Valor="Ingles" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></componentes:ChaveValor>
+                            <componentes:ChaveValor Chave="Diretor" Valor="Um diretor qualquer" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></componentes:ChaveValor>
+                        </StackLayout>
+                        <componentes:ChaveValor Chave="Elenco" Valor="Tom Cruise" Margin="0,15"></componentes:ChaveValor>
+                    </StackLayout>
+                    <Label Margin="0,10" 
+                           TextColor="{StaticResource CorBackGroundMaisClaro}"
+                           FontSize="Large" 
+                           FontAttributes="Bold" 
+                           HorizontalTextAlignment="Start"
+                           TextDecorations="Underline" 
+                           Text="{Binding DescricaoLeiaOculte}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LeiaMaisCommand}"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <componentes:DropDown Titulo="Cinema" PaddingTextoDropDown="10,0,10,0" CorDeFundo="#2f3d51" Descricao="{Binding FilialSelecionada.Descricao}"  ClickComand="{Binding TrocarFilialCommand}" Margin="0,25"></componentes:DropDown>
+                <componentes:ProgramacaoSelector Programacoes="{Binding Programacao}" SessaoSelected="{Binding SessaoSelectedCommand}"></componentes:ProgramacaoSelector>
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</views:BasePages>

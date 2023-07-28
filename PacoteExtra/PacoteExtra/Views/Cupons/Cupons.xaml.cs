@@ -15,6 +15,18 @@ namespace PacoteExtra.Views.Cupons
         public Cupons()
         {
             InitializeComponent();
+            BoxDireita.IsVisible = false;
+            GuiaCupons.IsVisible = false;
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var evt = (TappedEventArgs)e;
+            if(evt != null && evt.Parameter is string opcao)
+            {
+                GuiaIngressos.IsVisible = BoxEsquerda.IsVisible = opcao == "ingressos";
+                GuiaCupons.IsVisible = BoxDireita.IsVisible = opcao == "cupons";
+            }
         }
     }
 }
