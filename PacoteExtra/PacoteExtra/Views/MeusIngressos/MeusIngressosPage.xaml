@@ -23,7 +23,10 @@
                 </componentes:LabelAwesome>
             </Grid>
             <StackLayout VerticalOptions="Center">
-                <componentes:NewCollectionViewFacil LabelSemElementos="Você ainda não comprou ingressos" ItensOrigem="{Binding Compras}" >
+                <componentes:NewCollectionViewFacil LabelSemElementos="Você ainda não comprou ingressos" 
+                                                    Margin="15"
+                                                    ItensOrigem="{Binding IngressosVencidos}"
+                                                    Template="IngressosTemplate">
                     
                 </componentes:NewCollectionViewFacil>
             </StackLayout>

@@ -7,9 +7,11 @@ using PacoteExtra.Core.Util;
 using PacoteExtra.Views.BuscaShopping;
 using PacoteExtra.Views.MeusIngressos;
 using PacoteExtra.Views.ProgrtamacaoDeFilme;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Reflection;
 using Xamarin.Forms;
 
@@ -47,7 +49,7 @@ namespace PacoteExtra.ViewModels
         [ObservableProperty]
         List<CollectionViewModel> favoritosList;
         [ObservableProperty]
-        List<CollectionViewModel> ingressos;
+        List<CollectionViewModel> ingressosEmAberto;
         [ObservableProperty]
         List<CollectionViewModel> cuponsList;
 
@@ -73,6 +75,16 @@ namespace PacoteExtra.ViewModels
         }
 
         [RelayCommand]
+        public void CuponClick(object cupom)
+        {
+            if (cupom is CollectionViewModel itemConvertido)
+            {
+                var popUpInformacao = new PopUpInfo(itemConvertido.Descricao, itemConvertido.Descricao3);
+                App.Current.MainPage.Navigation.PushPopupAsync(popUpInformacao);
+            }
+        }
+
+        [RelayCommand]
         public async void MinhasComprasClick()
         {
             await App.Current.MainPage.Navigation.PushAsync(new MeusIngressosPage());
@@ -91,7 +103,8 @@ namespace PacoteExtra.ViewModels
             PageSelected = 1;
         }
 
-        private void CarregueFilialFavorita()
+        [RelayCommand]
+        private void IngressoClick(object ingresso)
         {
 
         }
@@ -106,13 +119,24 @@ namespace PacoteExtra.ViewModels
                 var listaFilmes = await _filmeService.ObtenhaBilheteriaDeFilmesPorFilial(filial.Codigo);
                 var listaDefavoritos = await _filmeService.ObtenhaBilheteriesAdicionadasAoFavoritoAsync();
                 var programacaoDestaFilial = await _sessaoService.ObtenhaSessoesDaFilial(filial.Codigo, DateTime.Now, DateTime.Now.AddDays(15));
-                var ultimasCompras = await _historicoIngressos.ObtenhaUltimosIngressosDaFilial(filial.Codigo);
+                var ultimasCompras = await _historicoIngressos.ObtenhaUltimosIngressosDaFilial(true);
                 var cupons = await _descontoService.ObtenhaDescontosDaFilial(filial.Codigo);
 
                 var favoritos = from favorito in listaDefavoritos
                                 join filme in listaFilmes
                             on favorito.CodigoFilme equals filme.Codigo
                                 select filme;
+
+                var ingresssosDisponiveis = ultimasCompras.Select(x => new CollectionViewModel()
+                {
+                    Id = x.Codigo,
+                    Titulo = x.Filme.NomeFilme,
+                    Descricao = x.Sessao.DescricaoSessao,
+                    Descricao1 = x.Sessao.DataSessao.ToString("HH:mm"),
+                    Descricao2 = string.Join(", ", x.Poltronas.Select(x => x.Descricao)),
+                    Descricao3 = x.Sessao.DataSessao.ToString("dd/MM/yyyy"),
+                    Descricao4 = x.FilialCinema.Descricao
+                }).ToList();
 
                 Device.BeginInvokeOnMainThread(() =>
                 {
@@ -128,18 +152,16 @@ namespace PacoteExtra.ViewModels
                     }).ToList();
                     FilialSelecionada = filial;
                     Programacao = programacaoDestaFilial;
-                    Ingressos = ultimasCompras.Select(x => new CollectionViewModel() 
-                    { 
-                        Id = x.Codigo, 
-                        Titulo = x.Filme.NomeFilme, 
-                        Descricao = x.Sessao.DescricaoSessao, 
-                        Descricao1 = x.Sessao.DataSessao.ToString("HH:mm"),
-                        Descricao2 = string.Join(", ", x.Poltronas.Select(x => x.Descricao)), 
-                        Descricao3 = x.Sessao.DataSessao.ToString("dd/MM/YYYY"), 
-                        Descricao4 = x.FilialCinema.Descricao 
-                    }).ToList();
+                    IngressosEmAberto = ingresssosDisponiveis;
 
-                    CuponsList = cupons.Select(x => new CollectionViewModel() { }).ToList();
+                    CuponsList = cupons.Select(x => new CollectionViewModel()
+                    {
+                        Id = x.Codigo,
+                        Descricao = x.CodigoDesconto,
+                        Descricao1 = x.DescricaoDesconto,
+                        Descricao2 = x.ProcentagemDesconto.ToString(),
+                        Descricao3 = x.RegraDesconto,
+                    }).ToList();
                 });
             }, "Carregando dados");
         }

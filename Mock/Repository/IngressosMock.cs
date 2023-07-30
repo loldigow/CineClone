@@ -21,6 +21,14 @@ namespace Mock.Repository
                     Filme = 1,
                     Sessao = 1,
                     Poltronas = new List<int> (){ 1, 2 }
+                },
+                new IngressoModel()
+                {
+                    Codigo = 2,
+                    FilialCinema = 1,
+                    Filme = 1,
+                    Sessao = 103,
+                    Poltronas = new List<int> (){ 1, 2 }
                 }
             };
         }

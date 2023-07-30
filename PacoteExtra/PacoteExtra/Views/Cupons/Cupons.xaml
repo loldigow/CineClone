@@ -45,8 +45,9 @@
                     </StackLayout>
                     <StackLayout Padding="0,20,0,0">
                         <componentes:NewCollectionViewFacil LabelSemElementos="Nenhum ingresso disponivel" 
-                                                            ItensOrigem="{Binding Ingressos}"
+                                                            ItensOrigem="{Binding IngressosEmAberto}"
                                                             Margin="15"
+                                                            AoPressionar="{Binding IngressoClickCommand}"
                                                             Template="IngressosTemplate">
 
                         </componentes:NewCollectionViewFacil>
@@ -65,7 +66,12 @@
                         <Label Style="{x:StaticResource LabelDetalheCuponsIngressos}" FontAttributes="Bold" Text="Cinelfix Aparecida de Goiania" HorizontalTextAlignment="Center" TextColor="White"></Label>
                     </StackLayout>
                     <StackLayout Padding="0,20,0,0">
-                        <componentes:NewCollectionViewFacil LabelSemElementos="Nenhum desconto encontrado" ItensOrigem="{Binding IngressosList}">
+                        <componentes:NewCollectionViewFacil
+                            Margin="15"
+                            LabelSemElementos="Nenhum desconto encontrado" 
+                            ItensOrigem="{Binding CuponsList}"
+                            AoPressionar="{Binding CuponClickCommand}"
+                            Template="CuponsTemplate">
 
                         </componentes:NewCollectionViewFacil>
                     </StackLayout>

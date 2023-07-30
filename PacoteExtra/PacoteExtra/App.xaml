@@ -46,7 +46,7 @@
             </Style>
 
             <Style TargetType="Label" x:Key="LabelTituloProgramacao">
-                <Setter Property="FontSize" Value="40"></Setter>
+                <Setter Property="FontSize" Value="30"></Setter>
                 <Setter Property="TextColor" Value="{StaticResource CorTextosPrincipal}"></Setter>
                 <Setter Property="FontAttributes" Value="Bold"></Setter>
             </Style>
