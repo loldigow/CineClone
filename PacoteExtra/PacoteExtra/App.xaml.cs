@@ -5,6 +5,8 @@ using PacoteExtra.Views.Inicio;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using PacoteExtra.Core;
+using PacoteExtra.Componentes.ExemplosDeUso.Poltrona;
+using PacoteExtra.Componentes.ExemplosDeUso.SessaoComponente;
 
 namespace PacoteExtra
 {
@@ -19,7 +21,7 @@ namespace PacoteExtra
             this.RegistreDependencias();
             Mapper.CrieMapeamento();
 
-            MainPage = new NavigationPage( new InicioPage());
+            MainPage = new NavigationPage( new SessaoExemplo());
         }
 
         //protected override void OnStart()

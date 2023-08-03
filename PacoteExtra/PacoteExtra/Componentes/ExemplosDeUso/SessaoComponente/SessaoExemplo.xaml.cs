@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace PacoteExtra.Views.CompraTicket
+namespace PacoteExtra.Componentes.ExemplosDeUso.SessaoComponente
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CompraTicketPage : BasePages
+    public partial class SessaoExemplo : ContentPage
     {
-        public CompraTicketPage()
+        public SessaoExemplo()
         {
             InitializeComponent();
         }

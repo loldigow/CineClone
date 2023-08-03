@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PacoteExtra.Componentes.PoltronaComponente">
+  <ContentView.Content>
+        <Frame CornerRadius="5" BorderColor="Black" HasShadow="false" x:Name="PoltronaFrame" BackgroundColor="White">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+            </Frame.GestureRecognizers>
+            <Label x:Name="PoltronaNome" TextColor="Black" ></Label>
+        </Frame>
+  </ContentView.Content>
+</ContentView>

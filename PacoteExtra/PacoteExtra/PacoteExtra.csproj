@@ -69,7 +69,13 @@
     <EmbeddedResource Update="Componentes\ExemplosDeUso\PaginaDeProgramacaoComando.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Componentes\ExemplosDeUso\Poltrona\PoltronaPageExemplo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Componentes\ExemplosDeUso\SearchCustom\SearchCustomPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Componentes\ExemplosDeUso\SessaoComponente\SessaoExemplo.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\ExemplosDeUso\TabView\MinhasComprasTemplateExemplo.xaml">
@@ -82,6 +88,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\NewCollectionViewFacil.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Componentes\PoltronaComponente.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\PopUpInfo.xaml">
@@ -106,6 +115,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\ExemplosDeUso\ExemploCollectionView\ExemploCollectionViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Componentes\SessaoComponente.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Componentes\tabbetCustom.xaml">
