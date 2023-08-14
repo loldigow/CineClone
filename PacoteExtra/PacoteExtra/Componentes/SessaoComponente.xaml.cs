@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +31,52 @@ namespace PacoteExtra.Componentes
         public SessaoComponente()
         {
             InitializeComponent();
+        }
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (propertyName == nameof(TamanhoEmX) || propertyName == nameof(TamanhoEmY))
+            {
+                AjusteLocalCinema();
+            }
+        }
+
+        private void AjusteLocalCinema()
+        {
+
+            if (TamanhoEmX != 0 && TamanhoEmY != 0)
+            {
+                for (var i = 0; i < TamanhoEmX; i++)
+                {
+                    GridPoltronas.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                }
+                for (var i = 0; i < TamanhoEmY; i++)
+                {
+                    GridPoltronas.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                }
+
+                int cont = 0;
+                for(int i = 0; i< TamanhoEmX; i++)
+                {
+                    for(int j = 0; j < TamanhoEmY; j++)
+                    {
+                        GridPoltronas.Children.Add(new PoltronaComponente()
+                        {
+                            DescricaoPoltrona = $"{cont}",
+                            SelecaoCommand = new Command((e) => {
+                                AcioneEventoDeSelecao(e);
+                            })
+                        }, j, i) ;
+                        cont++;
+                    }
+                }
+            }
+
+        }
+
+        private void AcioneEventoDeSelecao(object e)
+        {
         }
     }
 }
