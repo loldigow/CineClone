@@ -49,11 +49,11 @@ namespace PacoteExtra.Componentes
             {
                 for (var i = 0; i < TamanhoEmX; i++)
                 {
-                    GridPoltronas.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+                    GridPoltronas.ColumnDefinitions.Add(new ColumnDefinition());
                 }
                 for (var i = 0; i < TamanhoEmY; i++)
                 {
-                    GridPoltronas.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+                    GridPoltronas.RowDefinitions.Add(new RowDefinition() );
                 }
 
                 int cont = 0;

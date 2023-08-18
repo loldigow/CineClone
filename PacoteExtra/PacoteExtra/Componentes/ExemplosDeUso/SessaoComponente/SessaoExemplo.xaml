@@ -6,7 +6,7 @@
              x:Class="PacoteExtra.Componentes.ExemplosDeUso.SessaoComponente.SessaoExemplo">
     <ContentPage.Content>
         <StackLayout>
-            <componentes:SessaoComponente TamanhoEmX="10" TamanhoEmY="11" HorizontalOptions="FillAndExpand" ></componentes:SessaoComponente>
+            <componentes:SessaoComponente TamanhoEmX="10" TamanhoEmY="8" HorizontalOptions="CenterAndExpand"></componentes:SessaoComponente>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
