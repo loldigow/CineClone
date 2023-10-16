@@ -205,6 +205,9 @@
 
         <DataTemplate x:Key="IngressosTemplate">
                 <StackLayout>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ItemDeLIstatapped" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
                 <BoxView BackgroundColor="White" HeightRequest="1"></BoxView>
                     <componentes:JustifyLabel Text="{Binding Titulo}"  TextColor="{StaticResource Branco}" FontAttributes="Bold" FontSize="Title" HorizontalOptions="FillAndExpand"></componentes:JustifyLabel>
                     <StackLayout Orientation="Horizontal">
@@ -216,6 +219,19 @@
                         <componentes:ChaveValor Chave="Data" Valor="{Binding Descricao3}"  OrientacaoTupla="Horizontal" HorizontalOptions="FillAndExpand"></componentes:ChaveValor>
                     </StackLayout >
                     <componentes:ChaveValor Chave="Local:" Valor="{Binding Descricao4}"  OrientacaoTupla="Horizontal"></componentes:ChaveValor>
+                <BoxView BackgroundColor="White" HeightRequest="1"></BoxView>
+            </StackLayout>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CuponsTemplate">
+            <StackLayout>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ItemDeLIstatapped" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
+                <BoxView BackgroundColor="White" HeightRequest="1"></BoxView>
+                <Label Text="{Binding Descricao}" TextColor="{StaticResource Branco}" FontAttributes="Bold" FontSize="Title"></Label>
+                <componentes:ChaveValor Chave="Descrição: " Valor="{Binding Descricao1}"></componentes:ChaveValor>
+                <componentes:ChaveValor Chave="Valor Desconto: " Valor="{Binding Descricao2, StringFormat='{0}%'}" OrientacaoTupla="Horizontal"></componentes:ChaveValor>
                 <BoxView BackgroundColor="White" HeightRequest="1"></BoxView>
             </StackLayout>
         </DataTemplate>

@@ -16,17 +16,23 @@ namespace PacoteExtra.Core.Services
         private readonly IFilialRepository _filialRepository = DependencyService.Resolve<IFilialRepository>();
         private readonly ISessaoRepository _sessaoRepository = DependencyService.Resolve<ISessaoRepository>();
         private readonly IPoltronaRepository _poltronaRepository = DependencyService.Resolve<IPoltronaRepository>();
-        public async Task<List<IngressoAppModel>> ObtenhaUltimosIngressosDaFilial(int codigoFilial)
+        public async Task<List<IngressoAppModel>> ObtenhaUltimosIngressosDaFilial(bool somenteEmAberto = false)
         {
             List<IngressoAppModel> listaIngressos = new List<IngressoAppModel>();
             var ingressos = await _ingressoRepository.ObtenhaTodosIngressosAdquiridos();
 
             foreach (var ingresso in ingressos)
             {
+
                 var ingressoAppModel = new IngressoAppModel();
+                ingressoAppModel.Sessao = await _sessaoRepository.ObtenhaSessaoPorCodigo(ingresso.Sessao);
+                if(somenteEmAberto && ingressoAppModel.Sessao.DataSessao < DateTime.Now)
+                {
+                    continue;
+                }
+                ingressoAppModel.Codigo = ingresso.Codigo;
                 ingressoAppModel.Filme = await _filmeRepository.ObtenhaDetalhesFilme(ingresso.Filme);
                 ingressoAppModel.FilialCinema = await _filialRepository.ObtenhaFilialPorCodigo(ingresso.FilialCinema);
-                ingressoAppModel.Sessao = await _sessaoRepository.ObtenhaSessaoPorCodigo(ingresso.Sessao);
                 var poltronasModel = await _poltronaRepository.ObtenhaPoltronaPorCodigos(ingresso.Poltronas);
                 ingressoAppModel.Poltronas.AddRange(poltronasModel);
                 listaIngressos.Add(ingressoAppModel);

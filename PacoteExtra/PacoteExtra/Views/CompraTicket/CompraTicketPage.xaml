@@ -1,12 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PacoteExtra.Views.CompraTicket.CompraTicketPage">
+<views:BasePages  xmlns:views="clr-namespace:PacoteExtra.Views"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  NavigationPage.HasNavigationBar="false"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                  xmlns:viewmodels="clr-namespace:PacoteExtra.ViewModels"
+                  x:Class="PacoteExtra.Views.CompraTicket.CompraTicketPage">
+    <views:BasePages.BindingContext>
+        <viewmodels:CompraTicketViewModel></viewmodels:CompraTicketViewModel>
+    </views:BasePages.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid x:Name="Salao" 
+                  RowDefinitions="{Binding RowsSessao}" 
+                  ColumnDefinitions="{Binding ColumnsSessao}">
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:BasePages>

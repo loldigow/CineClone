@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:componentes="clr-namespace:PacoteExtra.Componentes" xmlns:poltrona="clr-namespace:PacoteExtra.Componentes.ExemplosDeUso.Poltrona"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="PacoteExtra.Componentes.ExemplosDeUso.Poltrona.PoltronaPageExemplo">
+    <ContentPage.BindingContext>
+        <poltrona:PoltronaMVVM></poltrona:PoltronaMVVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <componentes:PoltronaComponente DescricaoPoltrona="1" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="2" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="3" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="4" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="5" SelecaoCommand="{Binding PoltronaClickCommand}" Ocupado="true"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="6" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="7" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="8" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="9" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="10" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <componentes:PoltronaComponente DescricaoPoltrona="11" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="12" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="13" SelecaoCommand="{Binding PoltronaClickCommand}"></componentes:PoltronaComponente>
+                <componentes:PoltronaComponente DescricaoPoltrona="14" SelecaoCommand="{Binding PoltronaClickCommand}" Ocupado="true"></componentes:PoltronaComponente>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

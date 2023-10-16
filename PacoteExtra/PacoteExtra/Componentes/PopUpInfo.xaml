@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<extensions:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:extensions="http://rotorgames.com" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:componetes="clr-namespace:PacoteExtra.Componentes"
+                      Padding="25"
+             x:Class="PacoteExtra.Componentes.PopUpInfo">
+    <extensions:PopupPage.Content>
+        <Frame CornerRadius="15" 
+               BackgroundColor="{StaticResource CorElementosInvertido}"
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"
+               Padding="25">
+            <StackLayout>
+                <StackLayout Margin="0,5,0,25">
+                    <Label x:Name="LabelTitulo" HorizontalTextAlignment="Center" Style="{StaticResource LabelDefalTitulo}"></Label>
+                    <Label x:Name="LabelMensagem" Style="{x:StaticResource LabelDefalDescricao}"></Label>
+                </StackLayout>
+                <componetes:BotaoFacil x:Name="BotaoFechar" Texto="Fechar"  CorBorda="{StaticResource Branco}" >
+                </componetes:BotaoFacil>
+            </StackLayout>
+        </Frame>
+    </extensions:PopupPage.Content>
+</extensions:PopupPage>

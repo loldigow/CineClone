@@ -24,7 +24,7 @@ namespace Mock.Repository
                 new SessaoModel() { Codigo = 8, DescricaoSessao = "Sala B", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(1).Day, 18,00,00), CodigoFilial = 3, CodigoFilme = 3 },
                 new SessaoModel() { Codigo = 9, DescricaoSessao = "Sala C", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(1).Day, 16,00,00), CodigoFilial = 4, CodigoFilme = 1 },
                 new SessaoModel() { Codigo = 101, DescricaoSessao = "Sala G", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(1).Day, 22,00,00), CodigoFilial = 4, CodigoFilme = 5 },
-                new SessaoModel() { Codigo = 101, DescricaoSessao = "Sala G", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(1).Day, 22,00,00), CodigoFilial = 4, CodigoFilme = 5 },
+                new SessaoModel() { Codigo = 102, DescricaoSessao = "Sala G", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(1).Day, 22,00,00), CodigoFilial = 4, CodigoFilme = 5 },
 
                 new SessaoModel() { Codigo = 10, DescricaoSessao = "Sala G", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(2).Day, 22,00,00), CodigoFilial = 4, CodigoFilme = 5 },
                 new SessaoModel() { Codigo = 11, DescricaoSessao = "Sala A", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(2).Day, 16,00,00), CodigoFilial = 1, CodigoFilme = 1 },
@@ -125,13 +125,15 @@ namespace Mock.Repository
                 new SessaoModel() { Codigo = 98, DescricaoSessao = "Sala B", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(13).Day, 18,00,00), CodigoFilial = 3, CodigoFilme = 3 },
                 new SessaoModel() { Codigo = 99, DescricaoSessao = "Sala C", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(13).Day, 16,00,00), CodigoFilial = 4, CodigoFilme = 4 },
 
-                new SessaoModel() { Codigo = 100, DescricaoSessao = "Sala G", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(14).Day, 22,00,00), CodigoFilial = 4, CodigoFilme = 5 }};
+                new SessaoModel() { Codigo = 100, DescricaoSessao = "Sala G", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(14).Day, 22,00,00), CodigoFilial = 4, CodigoFilme = 5 },
+                new SessaoModel() { Codigo = 103, DescricaoSessao = "Sala G", DataSessao = new DateTime(2023,07,DateTime.Now.AddDays(-1).Day, 22,00,00), CodigoFilial = 4, CodigoFilme = 5 }};
         }
 
         public async Task<SessaoModel> ObtenhaSessaoPorCodigo(int sessao)
         {
             await Task.Delay(15);
-            return _sessaoModels.FirstOrDefault(x => x.Codigo == sessao);
+            var teste = _sessaoModels.FirstOrDefault(x => x.Codigo == sessao);
+            return teste;
         }
 
         public async Task<List<SessaoModel>> ObtenhaSessoes(int codigoFilme, int codigofilial, DateTime dataInicioBusca, DateTime dataFimBusca)

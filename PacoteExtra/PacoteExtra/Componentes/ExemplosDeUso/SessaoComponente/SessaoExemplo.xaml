@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:componentes="clr-namespace:PacoteExtra.Componentes"
+             NavigationPage.HasBackButton="False"
+             x:Class="PacoteExtra.Componentes.ExemplosDeUso.SessaoComponente.SessaoExemplo">
+    <ContentPage.Content>
+        <StackLayout>
+            <componentes:SessaoComponente TamanhoEmX="10" TamanhoEmY="8" HorizontalOptions="CenterAndExpand"></componentes:SessaoComponente>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

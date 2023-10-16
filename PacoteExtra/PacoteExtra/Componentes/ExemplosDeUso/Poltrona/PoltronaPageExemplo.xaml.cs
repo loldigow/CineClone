@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace PacoteExtra.Views.CompraTicket
+namespace PacoteExtra.Componentes.ExemplosDeUso.Poltrona
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CompraTicketPage : BasePages
+    public partial class PoltronaPageExemplo : ContentPage
     {
-        public CompraTicketPage()
+        public PoltronaPageExemplo()
         {
             InitializeComponent();
         }
